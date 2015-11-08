@@ -14,8 +14,6 @@ public class TextNews : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        scrollSpeed *= Screen.width / 1280.0f;
-
         queue.Enqueue(text);
 
         StartCoroutine(MainLoop());

@@ -8,8 +8,8 @@ public class BarContents : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-        ratio = Mathf.Min(1.0f, ratio + 0.1f * Time.deltaTime);
+//        ratio = Mathf.Min(1.0f, ratio + 0.1f * Time.deltaTime);
 
-        GetComponent<Image>().fillAmount = ratio;
+//        GetComponent<Image>().fillAmount = ratio;
     }
 }
