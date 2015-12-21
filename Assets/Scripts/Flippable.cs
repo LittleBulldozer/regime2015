@@ -5,40 +5,35 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 
-public class Flippable : MonoBehaviour
+[ExecuteInEditMode]
+public class Flippable : MonoBehaviour, IDragHandler
 {
     public RectTransform frontPageMask;
+    public RectTransform shadow;
     public RectTransform backPage;
     public RectTransform backPageShadow;
-    public RectTransform frontPageBackSide;
-    public RectTransform frontPageBackSideShadow;
     public RectTransform C;
     public RectTransform SB;
     public RectTransform ST;
     public RectTransform EB;
 
-    NotifyDragInfo notifyDragInfo;
-
-    void Awake()
+    public void OnDrag(PointerEventData e)
     {
-        frontPageBackSide.gameObject.AddComponent<NotifyDragInfo>();
-        notifyDragInfo = frontPageBackSide.gameObject.GetComponent<NotifyDragInfo>();
-        notifyDragInfo.OnDragEvent += OnBackContentDrag;
+        C.position = Input.mousePosition;
+        UpdateGeometry();
     }
 
     void Start()
     {
-        UpdateGeometry(C.position);
+        UpdateGeometry();
     }
-
-    void OnDestroy()
+    
+    void Update()
     {
-        DestroyImmediate(notifyDragInfo);
-    }
-
-    void OnBackContentDrag(PointerEventData e)
-    {
-        UpdateGeometry(Input.mousePosition);
+        if (Application.isPlaying == false)
+        {
+            UpdateGeometry();
+        }
     }
 
     Vector2 AssureInsideCircle(Vector2 Origin, float distSquare, Vector2 samplePos)
@@ -58,15 +53,15 @@ public class Flippable : MonoBehaviour
         }
     }
 
-    void UpdateGeometry(Vector2 samplePos)
+    void UpdateGeometry()
     {
-        C.position = frontPageBackSide.position =
+        transform.position =
             AssureInsideCircle(ST.position, (ST.position - EB.position).sqrMagnitude,
-            AssureInsideCircle(SB.position, (SB.position - EB.position).sqrMagnitude, samplePos));
+            AssureInsideCircle(SB.position, (SB.position - EB.position).sqrMagnitude, C.position));
 
         var T0 = (C.position + EB.position) / 2;
 
-        var u = Vector3.Normalize(Vector3.Cross((EB.position - C.position), new Vector3(0, 0, -1)));
+        var u = Vector3.Normalize(Vector3.Cross((EB.position - transform.position), new Vector3(0, 0, -1)));
         var v = (SB.position - EB.position).normalized;
         var lhs = Vector3.Cross(v, u);
         var rhs = Vector3.Cross((T0 - EB.position), u);
@@ -74,20 +69,24 @@ public class Flippable : MonoBehaviour
         var T1_ = EB.position + b * v;
         var T1 = new Vector3(T1_.x, T1_.y, 0);
 
-        var delta = T1 - C.position;
+        var delta = T1 - transform.position;
         var backContentAngle = 180 * Mathf.Atan2(delta.y, delta.x) / Mathf.PI;
-        frontPageBackSide.rotation = Quaternion.Euler(0, 0, backContentAngle + 90);
-
-//        backPage.position;
+        transform.rotation = Quaternion.Euler(0, 0, backContentAngle + 90);
 
         frontPageMask.position = T1;
         var frontPageMaskAngle = 180 * Mathf.Atan2(u.y, u.x) / Mathf.PI;
         frontPageMask.rotation = Quaternion.Euler(0, 0, frontPageMaskAngle);
 
-        backPageShadow.position = T1;
-        backPageShadow.rotation = Quaternion.Euler(0, 0, 180 + frontPageMaskAngle);
+        if (backPageShadow != null)
+        {
+            backPageShadow.position = T1;
+            backPageShadow.rotation = Quaternion.Euler(0, 0, 180 + frontPageMaskAngle);
+        }
 
-        frontPageBackSideShadow.position = T1;
-        frontPageBackSideShadow.rotation = Quaternion.Euler(0, 0, frontPageMaskAngle);
+        if (shadow != null)
+        {
+            shadow.position = T1;
+            shadow.rotation = Quaternion.Euler(0, 0, frontPageMaskAngle);
+        }
     }
 }
