@@ -30,10 +30,7 @@ public class Flippable : MonoBehaviour, IDragHandler
     
     void Update()
     {
-        if (Application.isPlaying == false)
-        {
-            UpdateGeometry();
-        }
+        UpdateGeometry();
     }
 
     Vector2 AssureInsideCircle(Vector2 Origin, float distSquare, Vector2 samplePos)
