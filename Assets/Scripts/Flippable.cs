@@ -56,7 +56,7 @@ public class Flippable : MonoBehaviour, IDragHandler
             AssureInsideCircle(ST.position, (ST.position - EB.position).sqrMagnitude,
             AssureInsideCircle(SB.position, (SB.position - EB.position).sqrMagnitude, C.position));
 
-        var T0 = (C.position + EB.position) / 2;
+        var T0 = (transform.position + EB.position) / 2;
 
         var u = Vector3.Normalize(Vector3.Cross((EB.position - transform.position), new Vector3(0, 0, -1)));
         var v = (SB.position - EB.position).normalized;
