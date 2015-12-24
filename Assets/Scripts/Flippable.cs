@@ -19,8 +19,8 @@ public class Flippable : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData e)
     {
-        C.position = Input.mousePosition;
-        UpdateGeometry();
+//        C.position = Input.mousePosition;
+//        UpdateGeometry();
     }
 
     void Start()
