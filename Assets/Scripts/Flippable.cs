@@ -28,7 +28,7 @@ public class Flippable : MonoBehaviour, IDragHandler
         UpdateGeometry();
     }
     
-    void Update()
+    void LateUpdate()
     {
         UpdateGeometry();
     }
