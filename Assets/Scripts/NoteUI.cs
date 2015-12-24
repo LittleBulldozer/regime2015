@@ -50,11 +50,15 @@ public class NoteUI : MonoBehaviour
     {
         var anim = C.GetComponent<Animator>();
 
+        flippable.GetComponent<RawImage>().enabled = false;
+
         // 이렇게 안하면 같은 animation플레이 할 때 play 안되는 버그 발생...
         yield return null;
 
         flippable.enabled = true;
 
+        int activeCount = 0;
+            
         while (true)
         {
             var info = anim.GetCurrentAnimatorStateInfo(0);
@@ -64,6 +68,11 @@ public class NoteUI : MonoBehaviour
             }
 
             backPage.color = (1 - info.normalizedTime) * shadowColor + info.normalizedTime * Color.white;
+
+            if (activeCount++ > 3)
+            {
+                flippable.GetComponent<RawImage>().enabled = true;
+            }
 
             yield return null;
         }
