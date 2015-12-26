@@ -6,22 +6,25 @@ public class NoteUI : MonoBehaviour
 {
     public GameObject C;
     public RectTransform EB;
+    public RectTransform frontPageMask;
+    public RectTransform frontPageBackSide;
     public Flippable flippable;
     public Image backPage;
     public Color shadowColor;
     public int animPatternCount;
+    public int reverseAnimPatternCount;
 
     public void NextPage()
     {
-        LetsPlay(false);
+        LetsPlay(false, animPatternCount);
     }
 
     public void PrevPage()
     {
-        LetsPlay(true);
+        LetsPlay(true, reverseAnimPatternCount);
     }
 
-    void LetsPlay(bool inverse)
+    void LetsPlay(bool inverse, int patternCounts)
     {
         var anim = C.GetComponent<Animator>();
         if (anim.enabled == true)
@@ -32,14 +35,14 @@ public class NoteUI : MonoBehaviour
         var invToken = "";
         if (inverse)
         {
-            invToken = "Inv_";  
+            invToken = "Reverse_";  
         }
 
-        var stateName = string.Format("Flip_{0}Pattern_{1}", invToken, Random.Range(1, animPatternCount + 1));
+        var stateName = string.Format("Flip_{0}Pattern_{1}", invToken, Random.Range(1, patternCounts + 1));
         anim.Play(stateName, -1, 0);
 
         backPage.color = shadowColor;
-
+        
         StartCoroutine(Coco(stateName));
     }
 
@@ -47,9 +50,15 @@ public class NoteUI : MonoBehaviour
     {
         var anim = C.GetComponent<Animator>();
 
+        flippable.GetComponent<RawImage>().enabled = false;
+
         // 이렇게 안하면 같은 animation플레이 할 때 play 안되는 버그 발생...
         yield return null;
 
+        flippable.enabled = true;
+
+        int activeCount = 0;
+            
         while (true)
         {
             var info = anim.GetCurrentAnimatorStateInfo(0);
@@ -59,6 +68,11 @@ public class NoteUI : MonoBehaviour
             }
 
             backPage.color = (1 - info.normalizedTime) * shadowColor + info.normalizedTime * Color.white;
+
+            if (activeCount++ > 3)
+            {
+                flippable.GetComponent<RawImage>().enabled = true;
+            }
 
             yield return null;
         }
@@ -75,7 +89,12 @@ public class NoteUI : MonoBehaviour
         }
         anim.enabled = false;
         var RT = C.GetComponent<RectTransform>();
-        RT.position = EB.position + new Vector3(10, 10, 0);
+        RT.position = EB.position;
+        flippable.enabled = false;
+        frontPageMask.position = RT.position;
+        frontPageMask.rotation = Quaternion.identity;
+        frontPageBackSide.position = RT.position;
+        frontPageBackSide.rotation = Quaternion.identity;
     }
 
     void Start()
