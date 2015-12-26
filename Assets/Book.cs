@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class Book : MonoBehaviour
@@ -42,6 +43,7 @@ public class Book : MonoBehaviour
         public ItemDesc item1Contents;
         public ItemDesc item2Contents;
         public List<GameObject> rootContents;
+        public Sprite bg;
     }
 
     [SerializeField]
@@ -55,6 +57,7 @@ public class Book : MonoBehaviour
         pageDesc.item1Contents = GetCachedItemContents(1);
         pageDesc.item2Contents = GetCachedItemContents(2);
         pageDesc.rootContents = GetRootContents();
+        pageDesc.bg = shownContents.parent.GetComponent<Image>().sprite;
 
         while (pages.Count <= cachedPageIndex)
         {
@@ -72,6 +75,12 @@ public class Book : MonoBehaviour
         MoveShownItemContents(targetContainer, 1);
         MoveShownItemContents(targetContainer, 2);
         MoveShownRootContents(targetContainer);
+
+        var targetImage = targetContainer.parent.GetComponent<Image>();
+        if (targetImage != null)
+        {
+            targetImage.sprite = shownContents.parent.GetComponent<Image>().sprite;
+        }
     }
 
     // phase 0
@@ -258,5 +267,7 @@ public class Book : MonoBehaviour
         {
             GetRootContents(targetContainer, pageDesc.rootContents);
         }
+
+        targetContainer.parent.GetComponent<Image>().sprite = pageDesc.bg;
     }
 }
