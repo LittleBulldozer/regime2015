@@ -9,7 +9,7 @@ public class NoteUI : MonoBehaviour
     public RectTransform frontPageMask;
     public RectTransform frontPageBackSide;
     public Flippable flippable;
-    public Image backPage;
+    public RawImage backPageShadow;
     public Color shadowColor;
     public int animPatternCount;
     public int reverseAnimPatternCount;
@@ -23,6 +23,8 @@ public class NoteUI : MonoBehaviour
     {
         LetsPlay(true, reverseAnimPatternCount);
     }
+
+    Book book;
 
     void LetsPlay(bool inverse, int patternCounts)
     {
@@ -41,12 +43,22 @@ public class NoteUI : MonoBehaviour
         var stateName = string.Format("Flip_{0}Pattern_{1}", invToken, Random.Range(1, patternCounts + 1));
         anim.Play(stateName, -1, 0);
 
-        backPage.color = shadowColor;
+        backPageShadow.color = shadowColor;
         
-        StartCoroutine(Coco(stateName));
+        if (inverse)
+        {
+            book.currentPageIndex--;
+        }
+        else
+        {
+            book.currentPageIndex++;
+        }
+        book.PreloadPage(inverse);
+
+        StartCoroutine(Coco(inverse, stateName));
     }
 
-    IEnumerator Coco(string stateName)
+    IEnumerator Coco(bool inverse, string stateName)
     {
         var anim = C.GetComponent<Animator>();
 
@@ -67,7 +79,12 @@ public class NoteUI : MonoBehaviour
                 break;  
             }
 
-            backPage.color = (1 - info.normalizedTime) * shadowColor + info.normalizedTime * Color.white;
+            float t = info.normalizedTime;
+            if (inverse)
+            {
+                t = 1 - t;
+            }
+            backPageShadow.color = (1 - t) * shadowColor + t * new Color(1,1,1,0);
 
             if (activeCount++ > 3)
             {
@@ -76,6 +93,8 @@ public class NoteUI : MonoBehaviour
 
             yield return null;
         }
+
+        book.SwitchPage(inverse);
 
         ResetCorner();
     }
@@ -100,5 +119,10 @@ public class NoteUI : MonoBehaviour
     void Start()
     {
         ResetCorner();
+    }
+
+    void Awake()
+    {
+       book = GetComponent<Book>();
     }
 }

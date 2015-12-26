@@ -17,7 +17,7 @@ public class BookInspector : Editor
 
         if (GUILayout.Button("Clear"))
         {
-            book.HideContents();
+            book.MoveShownContents(book.hiddenContents);
         }
 
         EditorGUI.BeginChangeCheck();

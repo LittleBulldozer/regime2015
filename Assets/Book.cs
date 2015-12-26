@@ -8,6 +8,7 @@ public class Book : MonoBehaviour
 {
     public RectTransform shownContents;
     public RectTransform hiddenContents;
+    public RectTransform backContents;
 
     [System.NonSerialized]
     public int currentPageIndex = 0;
@@ -65,28 +66,74 @@ public class Book : MonoBehaviour
         isDirty = false;
     }
 
-    public void HideContents()
+    public void MoveShownContents(RectTransform targetContainer)
     {
-        HideItemContents(0);
-        HideItemContents(1);
-        HideItemContents(2);
-        HideRootContents();
+        MoveShownItemContents(targetContainer, 0);
+        MoveShownItemContents(targetContainer, 1);
+        MoveShownItemContents(targetContainer, 2);
+        MoveShownRootContents(targetContainer);
+    }
+
+    // phase 0
+    public void PreloadPage(bool inverse)
+    {
+        if (inverse)
+        {
+            MoveShownContents(backContents);
+            GetAppropriateContents(shownContents);
+        }
+        else
+        {
+            GetAppropriateContents(backContents);
+        }
+    }
+
+    // phase 1
+    public void SwitchPage(bool inverse)
+    {
+        MoveShownContents(hiddenContents);
+        GetAppropriateContents(shownContents);
     }
 
     int cachedPageIndex = -1;
     bool isDirty = false;
     bool skipStoreInfo = false;
 
-
+#if UNITY_EDITOR
     void Update()
     {
-        isDirty = true;
-
-        if (cachedPageIndex != currentPageIndex)
+        if (Application.isPlaying == false)
         {
-            UpdatePage();
-            cachedPageIndex = currentPageIndex;
+            isDirty = true;
+
+            if (cachedPageIndex != currentPageIndex)
+            {
+                UpdatePageImmediate();
+            }
         }
+    }
+#endif
+
+    void UpdatePageImmediate()
+    {
+        if (Application.isPlaying == false && cachedPageIndex >= 0)
+        {
+            if (skipStoreInfo)
+            {
+                skipStoreInfo = false;
+                isDirty = false;
+            }
+            else
+            {
+                StoreCachedContentsInfo();
+            }
+        }
+
+        MoveShownContents(hiddenContents);
+
+        GetAppropriateContents(shownContents);
+
+        cachedPageIndex = currentPageIndex;
     }
 
     ItemDesc GetCachedItemContents(int itemIndex)
@@ -150,26 +197,26 @@ public class Book : MonoBehaviour
         }
     }
 
-    void HideItemContents(int itemIndex)
+    void MoveShownItemContents(RectTransform targetContainer, int itemIndex)
     {
         var fromItemNode = shownContents.Find(string.Format("Item{0}", itemIndex));
         var fromPictureBone = fromItemNode.Find("PictureBone");
-        var toItemNode = hiddenContents.Find(string.Format("Item{0}", itemIndex));
+        var toItemNode = targetContainer.Find(string.Format("Item{0}", itemIndex));
         var toPictureBone = toItemNode.Find("PictureBone");
 
         ChangeParent(fromPictureBone, toPictureBone, x => true);
         ChangeParent(fromItemNode, toItemNode, x => x.name != "PictureBone");
     }
 
-    void HideRootContents()
+    void MoveShownRootContents(RectTransform targetContainer)
     {
         var re = GetItemRegex();
-        ChangeParent(shownContents, hiddenContents, x => re.IsMatch(x.name) == false);
+        ChangeParent(shownContents, targetContainer, x => re.IsMatch(x.name) == false);
     }
 
-    void TransferItemContents(int itemIndex, ItemDesc itemDesc)
+    void GetItemContents(RectTransform targetContainer, int itemIndex, ItemDesc itemDesc)
     {
-        var toItemNode = shownContents.Find(string.Format("Item{0}", itemIndex));
+        var toItemNode = targetContainer.Find(string.Format("Item{0}", itemIndex));
         var toPictureBone = toItemNode.Find("PictureBone");
 
         foreach (var obj in itemDesc.pictureBoneContents)
@@ -183,15 +230,15 @@ public class Book : MonoBehaviour
         }
     }
 
-    void TransferRootContents(List<GameObject> list)
+    void GetRootContents(RectTransform targetContainer, List<GameObject> list)
     {
         foreach (var obj in list)
         {
-            obj.transform.SetParent(shownContents, false);
+            obj.transform.SetParent(targetContainer, false);
         }
     }
 
-    void GetAppropriateContents()
+    void GetAppropriateContents(RectTransform targetContainer)
     {
         if (pages.Count <= currentPageIndex)
         {
@@ -204,32 +251,12 @@ public class Book : MonoBehaviour
             return;
         }
 
-        TransferItemContents(0, pageDesc.item0Contents);
-        TransferItemContents(1, pageDesc.item1Contents);
-        TransferItemContents(2, pageDesc.item2Contents);
+        GetItemContents(targetContainer, 0, pageDesc.item0Contents);
+        GetItemContents(targetContainer, 1, pageDesc.item1Contents);
+        GetItemContents(targetContainer, 2, pageDesc.item2Contents);
         if (pageDesc.rootContents != null)
         {
-            TransferRootContents(pageDesc.rootContents);
+            GetRootContents(targetContainer, pageDesc.rootContents);
         }
-    }
-
-    void UpdatePage()
-    {
-        if (Application.isPlaying == false && cachedPageIndex >= 0)
-        {
-            if (skipStoreInfo)
-            {
-                skipStoreInfo = false;
-                isDirty = false;
-            }
-            else
-            {
-                StoreCachedContentsInfo();
-            }
-        }
-
-        HideContents();
-
-        GetAppropriateContents();
     }
 }
