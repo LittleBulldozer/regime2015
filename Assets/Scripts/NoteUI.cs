@@ -53,7 +53,7 @@ public class NoteUI : MonoBehaviour
         {
             book.currentPageIndex++;
         }
-        book.PreloadPage(inverse);
+        
 
         StartCoroutine(Coco(inverse, stateName));
     }
@@ -68,6 +68,7 @@ public class NoteUI : MonoBehaviour
         yield return null;
 
         flippable.enabled = true;
+        book.PreloadPage(inverse);
 
         int activeCount = 0;
             
