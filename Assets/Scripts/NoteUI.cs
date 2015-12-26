@@ -16,29 +16,40 @@ public class NoteUI : MonoBehaviour
 
     public void NextPage()
     {
+        prevPageIndex = book.currentPageIndex;
         book.currentPageIndex++;
         LetsPlay(false, animPatternCount);
     }
 
     public void PrevPage()
     {
+        prevPageIndex = book.currentPageIndex;
         book.currentPageIndex--;
         LetsPlay(true, reverseAnimPatternCount);
     }
 
     public void NextTargetPage(int pageIndex)
     {
+        prevPageIndex = book.currentPageIndex;
         book.currentPageIndex = pageIndex;
         LetsPlay(false, animPatternCount);
     }
 
     public void PrevTargetPage(int pageIndex)
     {
+        prevPageIndex = book.currentPageIndex;
         book.currentPageIndex = pageIndex;
-        LetsPlay(true, animPatternCount);
+        LetsPlay(true, reverseAnimPatternCount);
+    }
+
+    public void BackPage()
+    {
+        book.currentPageIndex = prevPageIndex;
+        LetsPlay(true, reverseAnimPatternCount);
     }
 
     Book book;
+    int prevPageIndex;
 
     void LetsPlay(bool inverse, int patternCounts)
     {
