@@ -16,12 +16,26 @@ public class NoteUI : MonoBehaviour
 
     public void NextPage()
     {
+        book.currentPageIndex++;
         LetsPlay(false, animPatternCount);
     }
 
     public void PrevPage()
     {
+        book.currentPageIndex--;
         LetsPlay(true, reverseAnimPatternCount);
+    }
+
+    public void NextTargetPage(int pageIndex)
+    {
+        book.currentPageIndex = pageIndex;
+        LetsPlay(false, animPatternCount);
+    }
+
+    public void PrevTargetPage(int pageIndex)
+    {
+        book.currentPageIndex = pageIndex;
+        LetsPlay(true, animPatternCount);
     }
 
     Book book;
@@ -45,16 +59,6 @@ public class NoteUI : MonoBehaviour
 
         backPageShadow.color = shadowColor;
         
-        if (inverse)
-        {
-            book.currentPageIndex--;
-        }
-        else
-        {
-            book.currentPageIndex++;
-        }
-        
-
         StartCoroutine(Coco(inverse, stateName));
     }
 
@@ -68,6 +72,7 @@ public class NoteUI : MonoBehaviour
         yield return null;
 
         flippable.enabled = true;
+
         book.PreloadPage(inverse);
 
         int activeCount = 0;
