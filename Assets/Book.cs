@@ -20,6 +20,13 @@ public class Book : MonoBehaviour
     [System.NonSerialized]
     public int currentPageIndex = 0;
 
+    public void SetCurrentPageIndex(int pageIndex)
+    {
+        currentPageIndex = pageIndex;
+
+        UpdatePageImmediate();
+    }
+
     public bool IsDirty()
     {
         return isDirty;
