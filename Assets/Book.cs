@@ -146,6 +146,14 @@ public class Book : MonoBehaviour
     }
 #endif
 
+    void OnEnable()
+    {
+        if (switchEvent != null)
+        {
+            switchEvent();
+        }
+    }
+
     void UpdatePageImmediate()
     {
         if (Application.isPlaying == false && cachedPageIndex >= 0)
@@ -217,7 +225,7 @@ public class Book : MonoBehaviour
         var list = new List<Transform>();
         foreach(Transform child in from)
         {
-            if (filter(child))
+            if (filter(child) && child.tag != "Tab")
             {
                 list.Add(child);
             }

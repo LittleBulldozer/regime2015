@@ -12,8 +12,6 @@ public class TabLook : MonoBehaviour
     {
         theBook.preloadEvent += PagePreloaded;
         theBook.switchEvent += PageSwitched;
-
-        PageSwitched();
     }
 
     void OnDestroy()
@@ -22,7 +20,7 @@ public class TabLook : MonoBehaviour
         theBook.preloadEvent -= PagePreloaded;
     }
 
-	void PagePreloaded(bool inverse)
+    public void PagePreloaded(bool inverse)
     {
         var RT = GetComponent<RectTransform>();
 
@@ -45,14 +43,19 @@ public class TabLook : MonoBehaviour
         }
 	}
 
-    void PageSwitched()
+    public void PageSwitched()
     {
+        var RT = GetComponent<RectTransform>();
+
         if (targetPageIndex == theBook.currentPageIndex)
         {
-            var RT = GetComponent<RectTransform>();
             var originalPos = RT.anchoredPosition;
             transform.SetParent(theBook.shownContents, false);
             StartCoroutine(KeepPos(originalPos));
+        }
+        else
+        {
+            RT.SetParent(originalContainer, false);
         }
     }
 
