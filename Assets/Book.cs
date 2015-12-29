@@ -7,6 +7,12 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class Book : MonoBehaviour
 {
+    public delegate void PreloadEvent(bool inverse);
+    public PreloadEvent preloadEvent;
+
+    public delegate void SwitchEvent();
+    public SwitchEvent switchEvent;
+
     public RectTransform shownContents;
     public RectTransform hiddenContents;
     public RectTransform backContents;
@@ -95,6 +101,11 @@ public class Book : MonoBehaviour
         {
             GetAppropriateContents(backContents);
         }
+
+        if (preloadEvent != null)
+        {
+            preloadEvent(inverse);
+        }
     }
 
     // phase 1
@@ -102,6 +113,11 @@ public class Book : MonoBehaviour
     {
         MoveShownContents(hiddenContents);
         GetAppropriateContents(shownContents);
+
+        if (switchEvent != null)
+        {
+            switchEvent();
+        }
     }
 
     int cachedPageIndex = -1;

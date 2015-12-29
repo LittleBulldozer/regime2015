@@ -23,6 +23,11 @@ public class NoteUI : MonoBehaviour
 
     public void PrevPage()
     {
+        if (book.currentPageIndex == 0)
+        {
+            return;
+        }
+
         prevPageIndex = book.currentPageIndex;
         book.currentPageIndex--;
         LetsPlay(true, reverseAnimPatternCount);
@@ -30,6 +35,16 @@ public class NoteUI : MonoBehaviour
 
     public void NextTargetPage(int pageIndex)
     {
+        if (pageIndex < 0)
+        {
+            throw new System.Exception("pageIndex < 0!");
+        }
+
+        if (book.currentPageIndex == pageIndex)
+        {
+            return;
+        }
+
         prevPageIndex = book.currentPageIndex;
         book.currentPageIndex = pageIndex;
         LetsPlay(false, animPatternCount);
@@ -37,6 +52,16 @@ public class NoteUI : MonoBehaviour
 
     public void PrevTargetPage(int pageIndex)
     {
+        if (pageIndex < 0)
+        {
+            throw new System.Exception("pageIndex < 0!");
+        }
+
+        if (book.currentPageIndex == pageIndex)
+        {
+            return;
+        }
+
         prevPageIndex = book.currentPageIndex;
         book.currentPageIndex = pageIndex;
         LetsPlay(true, reverseAnimPatternCount);
