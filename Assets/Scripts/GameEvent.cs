@@ -30,7 +30,7 @@ public class GameEvent : MonoBehaviour
         {
             unityEvent.Invoke();
 
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }
