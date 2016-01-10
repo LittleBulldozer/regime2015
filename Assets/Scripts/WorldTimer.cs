@@ -79,12 +79,12 @@ public class WorldTimer : MonoBehaviour
             day.Value = nowDay;
 
             var deltaDay = day.Value - cachedDays;
-            if (deltaDay >= 1)
+            while (deltaDay >= 1)
             {
-                dateTime.Value = dateTime.Value.AddDays(deltaDay);
-
-                cachedDays = day.Value;
+                dateTime.Value = dateTime.Value.AddDays(1);
+                deltaDay--;
             }
+            cachedDays = day.Value;
         }
     }
 }
