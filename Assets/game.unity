@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3987fe58957acbd49a3195ae5c5d194d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foldWidth: 84
+  foldWidth: 0
 --- !u!114 &140439684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,8 +3208,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 694, y: 1234}
+  m_AnchoredPosition: {x: 34, y: -32}
+  m_SizeDelta: {x: 761, y: 1308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572835053
 MonoBehaviour:
@@ -3230,7 +3230,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 515ad7fbf5de94b43a26a871be3a1a72, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5135,47 +5135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca511c15f11b07749819bfe4ad15291e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 1824112318}
+  world: {fileID: 0}
   dateData:
-    year: 2016
-    month: 6
-    day: 4
+    year: 0
+    month: 0
+    day: 0
   unityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1824112321}
-        m_MethodName: OpenPage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1824112319}
-        m_MethodName: SetTimeScaleModePause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1484467902}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &927500721
@@ -5189,36 +5156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca511c15f11b07749819bfe4ad15291e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 1824112318}
+  world: {fileID: 0}
   dateData:
-    year: 2016
-    month: 6
-    day: 3
+    year: 0
+    month: 0
+    day: 0
   unityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1484467902}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1168841972}
-        m_MethodName: set_text
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 1
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &927500722
@@ -5232,36 +5177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca511c15f11b07749819bfe4ad15291e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 1824112318}
+  world: {fileID: 0}
   dateData:
-    year: 2016
-    month: 6
-    day: 2
+    year: 0
+    month: 0
+    day: 0
   unityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1484467902}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1168841972}
-        m_MethodName: set_text
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 2
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &927500723
@@ -5275,36 +5198,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca511c15f11b07749819bfe4ad15291e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 1824112318}
+  world: {fileID: 0}
   dateData:
-    year: 2016
-    month: 6
-    day: 1
+    year: 0
+    month: 0
+    day: 0
   unityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1484467902}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1168841972}
-        m_MethodName: set_text
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 3
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &934369462
@@ -9108,9 +9009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a360d4d2adb7c4a8b5bd4bc3bee576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1426057282}
-  book: {fileID: 1722670758}
-  noteUI: {fileID: 1722670757}
+  canvas: {fileID: 0}
+  book: {fileID: 0}
+  noteUI: {fileID: 0}
 --- !u!114 &1824112322
 MonoBehaviour:
   m_ObjectHideFlags: 0
