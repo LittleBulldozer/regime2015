@@ -1019,6 +1019,11 @@ Prefab:
       propertyPath: m_Name
       value: Image (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11488340, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a10d71d0baeb60b449ad631075213f9b,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
   m_IsPrefabParent: 0
@@ -1288,6 +1293,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11488340, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e855cb90c72d444ca7586d061793254,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
   m_IsPrefabParent: 0
@@ -1528,6 +1538,11 @@ Prefab:
       propertyPath: m_Name
       value: Image (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 11488340, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a10d71d0baeb60b449ad631075213f9b,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
   m_IsPrefabParent: 0
@@ -2504,6 +2519,11 @@ Prefab:
       propertyPath: m_Name
       value: Image (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11488340, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e855cb90c72d444ca7586d061793254,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 805728ef9ac963249895b1dd4b3b25e6, type: 2}
   m_IsPrefabParent: 0
