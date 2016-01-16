@@ -8,13 +8,13 @@ public class Selectable : MonoBehaviour
     public UnityEvent selectEvent;
     public UnityEvent unselectEvent;
 
-    enum State
+    public void Awake()
     {
-        Unselected,
-        Selected
+        if (selectGroup != null)
+        {
+            selectGroup.Register(this);
+        }
     }
-
-    State state = State.Unselected;
 
     public void Unselect()
     {
@@ -49,4 +49,13 @@ public class Selectable : MonoBehaviour
                 throw new System.Exception("Unhandled state : " + state);
         }
     }
+
+    enum State
+    {
+        Unselected,
+        Selected
+    }
+
+    State state = State.Unselected;
+
 }
