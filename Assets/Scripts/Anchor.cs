@@ -43,6 +43,7 @@ public class Anchor : MonoBehaviour
 
     void TryRegister()
     {
+        /*
         if (Kernel.anchorManager == null)
         {
             Invoke("TryRegister", 0.5f);
@@ -50,6 +51,7 @@ public class Anchor : MonoBehaviour
         }
 
         Kernel.anchorManager.Register(type, transform);
+        */
     }
 
 #if UNITY_EDITOR

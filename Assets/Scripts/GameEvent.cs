@@ -24,7 +24,7 @@ public class GameEvent : MonoBehaviour
         timer.dateTime.StopListen(listenerId);
     }
 
-    void DateTimeListener(DateTime nowTime)
+    void DateTimeListener(DateTime nowTime, DateTime prevTime)
     {
         if (dateData.IsSameTime(nowTime))
         {

@@ -16,9 +16,9 @@ public class DateText : MonoBehaviour
         timer.dateTime.Listen(DateTimeChanged);
 	}
 
-    void DateTimeChanged(DateTime newDateTime)
+    void DateTimeChanged(DateTime dateTime, DateTime prevDateTime)
     {
         text.text = string.Format("{0}-{1}-{2}",
-            newDateTime.Year, newDateTime.Month, newDateTime.Day);
+            dateTime.Year, dateTime.Month, dateTime.Day);
     }
 }

@@ -62,6 +62,7 @@ public class SpawnPosition : MonoBehaviour
 
     void TrySubscribe()
     {
+        /*
         if (Kernel.anchorManager == null)
         {
             Invoke("TrySubscribe", 0.5f);
@@ -76,6 +77,7 @@ public class SpawnPosition : MonoBehaviour
         {
             SubscribeAnchor(anchorType, Kernel.anchorManager.Default);
         }
+        */
     }
 
     void OnEnable()

@@ -24,7 +24,7 @@ public class MyBar : MonoBehaviour
     }
 #endif
 
-    void UpdateText(float newValue)
+    void UpdateText(float newValue, float prev)
     {
         if (newValue > 50f)
         {

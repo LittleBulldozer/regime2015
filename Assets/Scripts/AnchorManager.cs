@@ -99,18 +99,18 @@ public class AnchorManager : MonoBehaviour
 
     void Awake()
     {
-        Kernel.anchorManager = this;
+ //       Kernel.anchorManager = this;
     }
 
     #if UNITY_EDITOR
     void OnEnable()
     {
-        Kernel.anchorManager = this;
+//        Kernel.anchorManager = this;
     }
 
     void Start()
     {
-        Kernel.anchorManager = this;
+  //      Kernel.anchorManager = this;
     }
 #endif
 

@@ -9,8 +9,8 @@ public class Observable<T>
 
     private T obj;
     private int idCount = 0;
-    private Dictionary<int, System.Action<T>> dict = new Dictionary<int, System.Action<T>>();
-    private List<System.Action<T>> disposables = new List<System.Action<T>>();
+    private Dictionary<int, System.Action<T, T>> dict = new Dictionary<int, System.Action<T, T>>();
+    private List<System.Action<T, T>> disposables = new List<System.Action<T, T>>();
     private bool isDictIterating = false;
     private List<int> deathIds = new List<int>();
 
@@ -45,6 +45,7 @@ public class Observable<T>
 
         set
         {
+            var prevObj = value;
             obj = value;
 
 #if UNITY_EDITOR
@@ -57,7 +58,7 @@ public class Observable<T>
             isDictIterating = true;
             foreach (var item in dict)
             {
-                item.Value(obj);
+                item.Value(obj, prevObj);
             }
             isDictIterating = false;
 
@@ -72,20 +73,20 @@ public class Observable<T>
 
             foreach (var callback in disposables)
             {
-                callback(obj);
+                callback(obj, prevObj);
             }
             disposables.Clear();
         }
     }
 
-    public int Listen(System.Action<T> callback)
+    public int Listen(System.Action<T, T> callback)
     {
         int id = idCount++;
         dict.Add(id, callback);
         return id;
     }
 
-    public void ListenOnce(System.Action<T> callback)
+    public void ListenOnce(System.Action<T, T> callback)
     {
         disposables.Add(callback);
     }
@@ -112,7 +113,7 @@ public class Observable<T>
     {
         Observable<T> ret = new Observable<T>();
 
-        a.Listen(x =>
+        a.Listen((x, prevX) =>
         {
             ret.Value = func(x);
         });
