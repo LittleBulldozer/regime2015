@@ -4,8 +4,8 @@ using System.Collections;
 using System;
 using UnityEditorInternal;
 
-[CustomEditor(typeof(Trigger))]
-public class TriggerEditor : Editor
+[CustomEditor(typeof(TriggerDesc))]
+public class TriggerDescEditor : Editor
 {
     public void OnEnable()
     {
@@ -17,6 +17,7 @@ public class TriggerEditor : Editor
         condList.drawElementCallback = DrawElementCallback(condList);
         condList.onSelectCallback = SelectCallback();
         condList.onRemoveCallback = RemoveCallback();
+        condList.onChangedCallback = (ReorderableList list) => { UpdateName(); };
 
         eventList = new ReorderableList(serializedObject,
                 serializedObject.FindProperty("events"),
@@ -26,6 +27,7 @@ public class TriggerEditor : Editor
         eventList.drawElementCallback = DrawElementCallback(eventList);
         eventList.onSelectCallback = SelectCallback();
         eventList.onRemoveCallback = RemoveCallback();
+        eventList.onChangedCallback = (ReorderableList list) => { UpdateName(); };
     }
 
     public override void OnInspectorGUI()
@@ -33,7 +35,6 @@ public class TriggerEditor : Editor
         serializedObject.Update();
 
         condList.DoLayoutList();
-
         eventList.DoLayoutList();
 
         if (selectedItem != null && selectedItem.objectReferenceValue != null)
@@ -45,6 +46,8 @@ public class TriggerEditor : Editor
             EditorGUILayout.Space();
         }
 
+        UpdateName();
+
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -55,19 +58,29 @@ public class TriggerEditor : Editor
     
     ReorderableList condList;
     ReorderableList eventList;
-    GUIContent addCondButtonContent = new GUIContent("조건 추가");
-    GUIContent addEventButtonContent = new GUIContent("이벤트 추가");
     SerializedProperty selectedItem;
     Editor selectedItemEditor;
-    
+
+    void AddToList<T>(ReorderableList list, T item) where T : ScriptableObject
+    {
+        var trigger = target as TriggerDesc;
+        AssetDatabase.AddObjectToAsset(item, trigger);
+        var index = list.serializedProperty.arraySize;
+        list.serializedProperty.arraySize++;
+        list.index = index;
+        var element = list.serializedProperty.GetArrayElementAtIndex(index);
+        element.objectReferenceValue = item;
+        serializedObject.ApplyModifiedProperties();
+    }
+
     void AddCondition(object userData)
     {
         ContextData data = userData as ContextData;
         if (data != null)
         {
             var newCond = CreateInstance(data.type) as Trigger.Condition;
-            var trigger = target as Trigger;
-            trigger._Conditions.Add(newCond);
+            newCond.name = data.type.ToString();
+            AddToList(condList, newCond);
         }
     }
 
@@ -77,8 +90,8 @@ public class TriggerEditor : Editor
         if (data != null)
         {
             var newEvent = CreateInstance(data.type) as Trigger.Event;
-            var trigger = target as Trigger;
-            trigger._Events.Add(newEvent);
+            newEvent.name = data.type.ToString();
+            AddToList(eventList, newEvent);
         }
     }
     
@@ -150,5 +163,43 @@ public class TriggerEditor : Editor
 
             prop.DeleteArrayElementAtIndex(list.index);
         };
+    }
+
+    string GetDescStringOfList(ReorderableList list, int limit)
+    {
+        var str = "";
+        var arrayCount = list.serializedProperty.arraySize;
+        for (int i = 0; i < arrayCount; i++)
+        {
+            var item = list.serializedProperty.GetArrayElementAtIndex(i);
+            if (item != null && item.objectReferenceValue != null)
+            {
+                if (str.Length > 0)
+                {
+                    str += ", ";
+                }
+                str += item.objectReferenceValue.name;
+            }
+        }
+
+        if (str.Length > limit)
+        {
+            str = str.Substring(0, 7) + "...";
+        }
+
+        return str;
+    }
+
+    void UpdateName()
+    {
+        var eventDesc = GetDescStringOfList(eventList, 40);
+        if (eventDesc.Length == 0)
+        {
+            target.name = "Empty";
+        }
+        else
+        {
+            target.name = eventDesc;
+        }
     }
 }

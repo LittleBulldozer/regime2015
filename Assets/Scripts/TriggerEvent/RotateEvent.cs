@@ -8,6 +8,7 @@ public class RotateEvent : Trigger.Event
     public override void Fire(ActionBlock block, Trigger trigger)
     {
         var dt = Time.deltaTime;
-        block.Actor.transform.Rotate(angle.x * dt, angle.y * dt, angle.z * dt);
+        var target = block.context.actor;
+        target.transform.Rotate(angle.x * dt, angle.y * dt, angle.z * dt);
     }
 }
