@@ -37,12 +37,15 @@ public class MemorySlotPostProcessor : AssetPostprocessor
 				foreach (var slot in m.slots)
 				{
 					str += "[SerializeField]\n";
-					str += slot.TypeString + " " + slot.name + " = " + slot.initialValue + ";\n";
+					str += string.Format("public {0} {1} = {2};\n"
+						, slot.TypeString
+						, slot.name
+						, slot.initialValue);
 				}
 				return str;
 			}));
 
-		var sw = new System.IO.StreamWriter("Assets/Scripts/Generated/MemoryData.cs");
+		var sw = new System.IO.StreamWriter(genPath);
 		sw.Write(memoryDataCSScript);
 		sw.Close();
 	}

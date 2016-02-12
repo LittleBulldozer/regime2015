@@ -1,0 +1,19 @@
+using UnityEngine;
+
+class ActionScriptDict
+{
+    #Fields#
+
+    public static void RunAction(int id)
+    {
+        MemoryData memoryData = TheWorld.memory.data;
+
+        switch (id)
+        {
+            #Cases#
+
+            default:
+                throw new System.Exception("Unhandled action id : " + id);
+        }
+    }
+}

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEditorInternal;
+using System.IO;
 
 [CustomEditor(typeof(CardDesc))]
 public class CardDescEditor : Editor
@@ -188,6 +189,14 @@ public class CardDescEditor : Editor
 		if (data != null)
 		{
 			var newAction = CreateInstance(data.type) as Action;
+			if (data.type == typeof(ScriptAction))
+			{
+				var scriptAction = newAction as ScriptAction;
+				var dict = ScriptActionDict.singleton;
+				scriptAction.id = dict.GetNextId();
+				dict.scriptActions.Add(scriptAction);
+				EditorUtility.SetDirty(dict);
+			}
 			newAction.name = data.type.ToString();
 			AddToList(actionList, newAction);
 		}

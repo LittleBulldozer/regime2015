@@ -6,6 +6,6 @@ using System;
 public class MemoryData
 {
 	[SerializeField]
-int test2 = 0;
+public int test2 = 0;
 
 }
