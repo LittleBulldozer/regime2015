@@ -24,4 +24,4 @@ MonoBehaviour:
   m_Name: ScriptAction
   m_EditorClassIdentifier: 
   id: 0
-  script: Debug.Log("hi");
+  script: memory.test2++;
