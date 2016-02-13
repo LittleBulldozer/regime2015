@@ -1,0 +1,20 @@
+using UnityEngine;
+using System.Linq;
+
+class ConditionScriptDict
+{
+    #Fields#
+
+    public static bool TestCondition(int id)
+    {
+        MemoryData memoryData = TheWorld.memory.data;
+
+        switch (id)
+        {
+            #Cases#
+
+            default:
+                throw new System.Exception("Unhandled action id : " + id);
+        }
+    }
+}
