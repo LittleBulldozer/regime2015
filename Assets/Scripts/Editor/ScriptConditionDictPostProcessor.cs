@@ -4,9 +4,9 @@ using System.Collections;
 using System.Linq;
 using System;
 
-public class ScriptActionDictPostProcessor : AssetPostprocessor
+public class ScriptConditionDictPostProcessor : AssetPostprocessor
 {
-	const string genPath = "Assets/Scripts/Generated/ActionScriptDict.cs";
+	const string genPath = "Assets/Scripts/Generated/ConditionScriptDict.cs";
 
 	static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
 	{
@@ -22,9 +22,9 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 
 	static void Regenerate()
 	{
-		var dict = ScriptActionDict.singleton;
+		var dict = ScriptConditionDict.singleton;
 
-		var tpl = Resources.Load<TextAsset>("Templates/ActionScriptDict");
+		var tpl = Resources.Load<TextAsset>("Templates/ConditionScriptDict");
 		var tplStr = tpl.ToString();
 
 		var csScript = CSFactory.MakeFromTemplate(tplStr
@@ -32,9 +32,11 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 				var str = "";
 				foreach (var scriptAction in dict.items)
 				{
-					str += string.Format("static void S_{0}(MemoryData memory)\n", scriptAction.id);
+					str += string.Format("static bool S_{0}(MemoryData memory)\n", scriptAction.id);
 					str += "{\n";
-					str += scriptAction.script;
+					var splited = scriptAction.script.Split('\n');
+					str += string.Join("\n", splited, 0, splited.Length - 1);
+					str += string.Format("\nreturn {0};", splited[splited.Length - 1]);
 					str += "}\n";
 				}
 				return str;
@@ -44,8 +46,7 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 				foreach (var scriptAction in dict.items)
 				{
 					str += string.Format("case {0}:\n", scriptAction.id);
-					str += string.Format("S_{0}(memoryData);\n", scriptAction.id);
-					str += "break;\n";
+					str += string.Format("return S_{0}(memoryData);\n", scriptAction.id);
 				}
 				return str;
 			}));
@@ -59,7 +60,7 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 	{
 		get
 		{
-			return ScriptActionDict.singletonPath;
+			return ScriptConditionDict.singletonPath;
 		}
 	}
 }

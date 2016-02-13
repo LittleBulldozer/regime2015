@@ -3,8 +3,8 @@ using UnityEditor;
 using System.Collections;
 using System.Linq;
 
-[CustomEditor(typeof(ScriptAction))]
-public class ScriptActionEditor : Editor
+[CustomEditor(typeof(ScriptCondition))]
+public class ScriptConditionEditor : Editor
 {
 	public void OnEnable()
 	{	
@@ -20,7 +20,7 @@ public class ScriptActionEditor : Editor
 		serializedObject.ApplyModifiedProperties();
 		if (EditorGUI.EndChangeCheck())
 		{
-			AssetDatabase.ImportAsset(ScriptActionDict.singletonPath);
+			AssetDatabase.ImportAsset(ScriptConditionDict.singletonPath);
 		}
 	}
 
