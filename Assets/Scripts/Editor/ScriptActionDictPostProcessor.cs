@@ -16,11 +16,11 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 			|| movedFromAssetPaths.Any(x => x == thePath);
 		if (changed)
 		{
-			Regenerate();
+			Regenerate(false);
 		}
 	}
 
-	static void Regenerate()
+	public static void Regenerate(bool empty)
 	{
 		var dict = ScriptActionDict.singleton;
 
@@ -30,24 +30,30 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 		var csScript = CSFactory.MakeFromTemplate(tplStr
 			, new CSFactory.TokenHandler("Fields", () => {
 				var str = "";
-				foreach (var scriptAction in dict.items)
-				{
-					str += string.Format("static void S_{0}(MemoryData memory)\n", scriptAction.id);
-					str += "{\n";
-					str += scriptAction.script;
-					str += "}\n";
-				}
-				return str;
+                if (empty == false)
+                {
+                    foreach (var scriptAction in dict.items)
+                    {
+                        str += string.Format("static void S_{0}(MemoryData memory)\n", scriptAction.id);
+                        str += "{\n";
+                        str += scriptAction.script;
+                        str += "}\n";
+                    }
+                }
+                return str;
 			})
 			, new CSFactory.TokenHandler("Cases", () => {
 				var str = "";
-				foreach (var scriptAction in dict.items)
-				{
-					str += string.Format("case {0}:\n", scriptAction.id);
-					str += string.Format("S_{0}(memoryData);\n", scriptAction.id);
-					str += "break;\n";
-				}
-				return str;
+                if (empty == false)
+                {
+                    foreach (var scriptAction in dict.items)
+                    {
+                        str += string.Format("case {0}:\n", scriptAction.id);
+                        str += string.Format("S_{0}(memoryData);\n", scriptAction.id);
+                        str += "break;\n";
+                    }
+                }
+                return str;
 			}));
 
 		var sw = new System.IO.StreamWriter(genPath);

@@ -16,11 +16,11 @@ public class ScriptConditionDictPostProcessor : AssetPostprocessor
 			|| movedFromAssetPaths.Any(x => x == thePath);
 		if (changed)
 		{
-			Regenerate();
+			Regenerate(false);
 		}
 	}
 
-	static void Regenerate()
+	public static void Regenerate(bool empty)
 	{
 		var dict = ScriptConditionDict.singleton;
 
@@ -30,25 +30,31 @@ public class ScriptConditionDictPostProcessor : AssetPostprocessor
 		var csScript = CSFactory.MakeFromTemplate(tplStr
 			, new CSFactory.TokenHandler("Fields", () => {
 				var str = "";
-				foreach (var scriptAction in dict.items)
-				{
-					str += string.Format("static bool S_{0}(MemoryData memory)\n", scriptAction.id);
-					str += "{\n";
-					var splited = scriptAction.script.Split('\n');
-					str += string.Join("\n", splited, 0, splited.Length - 1);
-					str += string.Format("\nreturn {0};", splited[splited.Length - 1]);
-					str += "}\n";
-				}
-				return str;
+                if (empty == false)
+                {
+                    foreach (var scriptAction in dict.items)
+                    {
+                        str += string.Format("static bool S_{0}(MemoryData memory)\n", scriptAction.id);
+                        str += "{\n";
+                        var splited = scriptAction.script.Split('\n');
+                        str += string.Join("\n", splited, 0, splited.Length - 1);
+                        str += string.Format("\nreturn {0};", splited[splited.Length - 1]);
+                        str += "}\n";
+                    }
+                }
+                return str;
 			})
 			, new CSFactory.TokenHandler("Cases", () => {
 				var str = "";
-				foreach (var scriptAction in dict.items)
-				{
-					str += string.Format("case {0}:\n", scriptAction.id);
-					str += string.Format("return S_{0}(memoryData);\n", scriptAction.id);
-				}
-				return str;
+                if (empty == false)
+                {
+                    foreach (var scriptAction in dict.items)
+                    {
+                        str += string.Format("case {0}:\n", scriptAction.id);
+                        str += string.Format("return S_{0}(memoryData);\n", scriptAction.id);
+                    }
+                }
+                return str;
 			}));
 
 		var sw = new System.IO.StreamWriter(genPath);
