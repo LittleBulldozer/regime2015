@@ -5,7 +5,7 @@ public class ScriptCondition : Condition, IUniqueID
 {
 	public int id = -1;
 
-	public string script = "";
+	public string script = "true";
 
 	public override bool IsSatisfied ()
 	{
