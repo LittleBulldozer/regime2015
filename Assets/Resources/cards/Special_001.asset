@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdcb81ec5b8b4c238b55a9ac723b793, type: 3}
-  m_Name: New CardDesc
+  m_Name: Special_001
   m_EditorClassIdentifier: 
-  title: Example
-  nickname: 
-  description: "\uC124\uBA85"
-  image: {fileID: 0}
+  title: "\uD14C\uB7EC \uACF5\uACA9 \uC870\uC791"
+  nickname: Special_001
+  description: "NKR\uC758 \uC18C\uD589\uC778 \uAC83\uCC98\uB7FC \uAFB8\uBA70 \uAD6D\uAC00
+    \uC911\uC694 \uC2DC\uC124\uC5D0 \uD14C\uB7EC\uB97C \uAC00\uD55C\uB2E4. Fund 200000
+    \uD544\uC694."
+  image: {fileID: 21300000, guid: 3f280ea8c623df4418603c8ef6488287, type: 3}
   defaultPriority: 0
   actions: []

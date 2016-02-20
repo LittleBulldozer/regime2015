@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa80e0d34dcb4796974d4c8715c7d2a, type: 3}
   m_Name: New Trigger
   m_EditorClassIdentifier: 
-  conditions: []
+  conditions:
+  - {fileID: 11418010, guid: 1d8817977e1ee49488698b829a026164, type: 2}
   actions: []

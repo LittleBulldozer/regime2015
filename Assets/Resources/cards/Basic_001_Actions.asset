@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92aa0946872f54aa496584fff33f5879, type: 3}
-  m_Name: ScriptActionDict
+  m_Script: {fileID: 11500000, guid: 0679e8e2eef9442a09aa05b9a5373d4d, type: 3}
+  m_Name: Basic_001_Actions
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11459602, guid: c0adf68ed5e5cda4086f71d76d89f9f1, type: 2}
+  memoText: "\uAE30\uC5C5\uB4E4\uC5D0\uAC8C\uC11C \uC791\uC804\uC6A9 \uC790\uAE08\uC744
+    \uC5BB\uC5B4\uB0B4\uC5C8\uB2E4."

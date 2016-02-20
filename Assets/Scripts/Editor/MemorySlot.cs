@@ -7,7 +7,7 @@ public enum SlotDataType
 	INT
 	, FLOAT
 	, STRING
-	, BOOLEAN
+	, BOOL
 	, CUSTOM
 }
 

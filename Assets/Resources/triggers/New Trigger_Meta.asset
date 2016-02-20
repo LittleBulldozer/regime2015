@@ -13,3 +13,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   script: 
+--- !u!114 &11418010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206bed3125c034d0ba9e131bb2f0aacd, type: 3}
+  m_Name: ScriptCondition
+  m_EditorClassIdentifier: 
+  id: 1
+  script: 

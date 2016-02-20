@@ -12,7 +12,35 @@ MonoBehaviour:
   m_Name: GameMemory
   m_EditorClassIdentifier: 
   slots:
-  - name: test2
+  - name: Approval
+    dataType: 0
+    customDataType: 
+    initialValue: 50
+  - name: Fear
     dataType: 0
     customDataType: 
     initialValue: 0
+  - name: Fund
+    dataType: 0
+    customDataType: 
+    initialValue: 1000
+  - name: AME_Reputation
+    dataType: 0
+    customDataType: 
+    initialValue: 50
+  - name: SOV_Reputation
+    dataType: 0
+    customDataType: 
+    initialValue: 50
+  - name: Phase_0
+    dataType: 3
+    customDataType: 
+    initialValue: true
+  - name: Phase_1
+    dataType: 3
+    customDataType: 
+    initialValue: false
+  - name: Phase_2
+    dataType: 3
+    customDataType: 
+    initialValue: false
