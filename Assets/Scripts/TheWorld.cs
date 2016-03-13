@@ -15,6 +15,16 @@ public class TheWorld : MonoBehaviour
     
     public static BoxUI boxUI;
 
+    public static GameFlow gameFlow;
+
+    public static CardCanvas cardCanvas;
+
+    public static Canvas eventCanvas;
+
+    public CardCanvas _cardCanvas;
+
+    public Canvas _eventCanvas;
+
     void Awake()
 	{
 		instance = this;
@@ -22,5 +32,7 @@ public class TheWorld : MonoBehaviour
 		noteRef = GetComponent<WorldNoteRef>();
 		memory = GetComponent<Memory>();
 		cardPool = GetComponent<CardPool>();
+        cardCanvas = _cardCanvas;
+        eventCanvas = _eventCanvas;
 	}
 }

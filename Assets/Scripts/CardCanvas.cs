@@ -15,22 +15,22 @@ public class CardCanvas : MonoBehaviour
         get {
             if (IsSelected(cardLT))
             {
-                return contexts[0];
+                return cardLT.cx;
             }
 
             if (IsSelected(cardRT))
             {
-                return contexts[1];
+                return cardRT.cx;
             }
 
             if (IsSelected(cardLB))
             {
-                return contexts[2];
+                return cardLB.cx;
             }
 
             if (IsSelected(cardRB))
             {
-                return contexts[3];
+                return cardRB.cx;
             }
 
             return null;
@@ -41,10 +41,10 @@ public class CardCanvas : MonoBehaviour
     {
         this.contexts = contexts;
 
-        ApplyView(cardLT, contexts[0]);
-        ApplyView(cardRT, contexts[1]);
-        ApplyView(cardLB, contexts[2]);
-        ApplyView(cardRB, contexts[3]);
+        cardLT.SetCardContext(contexts[0]);
+        cardRT.SetCardContext(contexts[1]);
+        cardLB.SetCardContext(contexts[2]);
+        cardRB.SetCardContext(contexts[3]);
     }
 
     void ApplyView(CardView view, CardPool.CardContext cx)

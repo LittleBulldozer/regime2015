@@ -3,14 +3,17 @@ using System.Collections;
 
 public class GameFlow : MonoBehaviour
 {
-    public CardCanvas cardCanvas;
-
     public void NotifyCardSelected()
     {
-        cardSelected = cardCanvas.selectedCard;
+        cardSelected = TheWorld.cardCanvas.selectedCard;
     }
 
     CardPool.CardContext cardSelected = null;
+
+    void Awake()
+    {
+        TheWorld.gameFlow = this;
+    }
 
     void Start ()
     {
@@ -24,7 +27,7 @@ public class GameFlow : MonoBehaviour
             Debug.Log("Beginning of the turn.");
 
             var contexts = TheWorld.cardPool.DrawCards(4);
-            cardCanvas.ApplyView(contexts);
+            TheWorld.cardCanvas.ApplyView(contexts);
 
             while (true)
             {

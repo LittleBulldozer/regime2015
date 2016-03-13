@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class CardView : MonoBehaviour
 {
+    public CardPool.CardContext cx;
     public Text title;
     public Image image;
     public Text description;
@@ -16,6 +17,4 @@ public class CardView : MonoBehaviour
         image.sprite = cx.image;
         description.text = cx.description;
     }
-
-    CardPool.CardContext cx;
 }
