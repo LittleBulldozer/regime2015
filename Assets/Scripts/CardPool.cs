@@ -46,6 +46,14 @@ public class CardPool : MonoBehaviour
             }
         }
 
+        public void RunAction()
+        {
+            foreach (var action in desc.actions)
+            {
+                action.RunAction();
+            }
+        }
+
         public float priority;
 
 		CardDesc desc;

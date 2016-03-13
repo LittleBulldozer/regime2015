@@ -12,8 +12,10 @@ public class TheWorld : MonoBehaviour
 	public static Memory memory;
 
 	public static CardPool cardPool;
+    
+    public static BoxUI boxUI;
 
-	void Awake()
+    void Awake()
 	{
 		instance = this;
 		timer = GetComponent<WorldTimer>();

@@ -4,6 +4,13 @@ using UnityEngine.Events;
 
 public class Selectable : MonoBehaviour
 {
+    public enum State
+    {
+        Unselected,
+        Selected
+    }
+
+    public State state = State.Unselected;
     public SelectGroup selectGroup;
     public UnityEvent selectEvent;
     public UnityEvent unselectEvent;
@@ -49,13 +56,4 @@ public class Selectable : MonoBehaviour
                 throw new System.Exception("Unhandled state : " + state);
         }
     }
-
-    enum State
-    {
-        Unselected,
-        Selected
-    }
-
-    State state = State.Unselected;
-
 }

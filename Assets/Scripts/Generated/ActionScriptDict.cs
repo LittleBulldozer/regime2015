@@ -2,7 +2,10 @@ using UnityEngine;
 
 class ActionScriptDict
 {
-    
+    static void S_0(MemoryData memory)
+{
+memory.Fear += 5;}
+
 
     public static void RunAction(int id)
     {
@@ -10,7 +13,10 @@ class ActionScriptDict
 
         switch (id)
         {
-            
+            case 0:
+S_0(memoryData);
+break;
+
 
             default:
                 throw new System.Exception("Unhandled action id : " + id);

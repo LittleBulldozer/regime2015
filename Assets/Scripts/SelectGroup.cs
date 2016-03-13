@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class SelectGroup : MonoBehaviour
 {
-    List<Selectable> selectables = new List<Selectable>();
+    public List<Selectable> selectables = new List<Selectable>();
 
     public void Register(Selectable selectable)
     {
