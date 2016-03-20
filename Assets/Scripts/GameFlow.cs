@@ -9,10 +9,12 @@ public class GameFlow : MonoBehaviour
     }
 
     CardPool.CardContext cardSelected = null;
+    RectTransform turnAlertPrefab;
 
     void Awake()
     {
         TheWorld.gameFlow = this;
+        turnAlertPrefab = Resources.Load<RectTransform>("prefabs/TurnAlert");
     }
 
     void Start ()
@@ -25,6 +27,9 @@ public class GameFlow : MonoBehaviour
         while (true)
         {
             Debug.Log("Beginning of the turn.");
+
+            var turnAlert = Instantiate(turnAlertPrefab);
+            turnAlert.SetParent(TheWorld.eventCanvas.transform, false);
 
             var contexts = TheWorld.cardPool.DrawCards(4);
             TheWorld.cardCanvas.ApplyView(contexts);
