@@ -14,13 +14,23 @@ public class MyBar : MonoBehaviour
 	void Awake ()
     {
         progress.Listen(UpdateText);
-        progress.Value = content.fillAmount * 100f;
+        if (Application.isPlaying == false)
+        {
+            progress.Value = content.fillAmount * 100f;
+        }
+        else
+        {
+            UpdateText(progress.Value, 0);
+        }
     }
 
 #if UNITY_EDITOR
     void Update()
     {
-        progress.Value = content.fillAmount * 100f;
+        if (Application.isPlaying == false)
+        {
+            progress.Value = content.fillAmount * 100f;
+        }
     }
 #endif
 
@@ -38,5 +48,7 @@ public class MyBar : MonoBehaviour
             rightText.gameObject.SetActive(true);
             rightText.text = newValue.ToString();
         }
+
+        content.fillAmount = newValue / 100f;
     }
 }
