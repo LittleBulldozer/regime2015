@@ -1,0 +1,26 @@
+스크립트 조건 예시 1)
+
+memory.Fear > 30
+
+
+스크립트 조건 예시 2)
+
+memory.Fear > 30 && memory.Phase_0 == true
+
+
+스크립트 조건 예시 3)
+
+int A = memory.Approval - memory.Fear;
+10 < A && Random.Range(0, 100) >= 50
+
+
+
+스크립트 액션 예시 1)
+
+memory.Fear += 30
+
+
+스크립트 액션 예시 2)
+
+memory.Fear += 30;
+memory.Fund -= 500;

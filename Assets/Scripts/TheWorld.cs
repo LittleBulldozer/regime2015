@@ -21,6 +21,8 @@ public class TheWorld : MonoBehaviour
 
     public static Canvas eventCanvas;
 
+    public static TriggerMgr triggerMgr;
+
     public CardCanvas _cardCanvas;
 
     public Canvas _eventCanvas;
@@ -32,6 +34,7 @@ public class TheWorld : MonoBehaviour
 		noteRef = GetComponent<WorldNoteRef>();
 		memory = GetComponent<Memory>();
 		cardPool = GetComponent<CardPool>();
+        triggerMgr = GetComponent<TriggerMgr>();
         cardCanvas = _cardCanvas;
         eventCanvas = _eventCanvas;
 	}

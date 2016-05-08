@@ -8,9 +8,9 @@ public class ScriptAction : Action, IUniqueID
 
 	public string script = "";
 
-	public override void RunAction()
+	public override void RunAction(int nrTurn)
 	{
-		ActionScriptDict.RunAction(id);
+		ActionScriptDict.RunAction(id, nrTurn);
 	}
 
 	public int GetID()

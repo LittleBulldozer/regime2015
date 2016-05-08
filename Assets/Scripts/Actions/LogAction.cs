@@ -6,8 +6,8 @@ public class LogAction : Action
 {
 	public string memoText;
 
-	public override void RunAction()
+	public override void RunAction(int nrTurn)
 	{
-		
+        Debug.Log("log action : " + memoText);
 	}
 }

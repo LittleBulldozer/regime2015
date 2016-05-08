@@ -18,11 +18,13 @@ public class ScriptConditionEditor : Editor
 		EditorGUI.BeginChangeCheck();
 		script.stringValue = EditorGUILayout.TextArea(script.stringValue);
 		serializedObject.ApplyModifiedProperties();
-		if (EditorGUI.EndChangeCheck())
-		{
-			AssetDatabase.ImportAsset(ScriptConditionDict.singletonPath);
-		}
-	}
 
-	SerializedProperty script;
+        if (GUILayout.Button("save"))
+        {
+            AssetDatabase.SaveAssets();
+            AssetDatabase.ImportAsset(ScriptConditionDict.singletonPath);
+        }
+    }
+
+    SerializedProperty script;
 }

@@ -18,11 +18,13 @@ public class ScriptActionEditor : Editor
 		EditorGUI.BeginChangeCheck();
 		script.stringValue = EditorGUILayout.TextArea(script.stringValue);
 		serializedObject.ApplyModifiedProperties();
-		if (EditorGUI.EndChangeCheck())
-		{
-			AssetDatabase.ImportAsset(ScriptActionDict.singletonPath);
-		}
-	}
+
+        if (GUILayout.Button("save"))
+        {
+            AssetDatabase.SaveAssets();
+            AssetDatabase.ImportAsset(ScriptActionDict.singletonPath);
+        }
+    }
 
 	SerializedProperty script;
 }

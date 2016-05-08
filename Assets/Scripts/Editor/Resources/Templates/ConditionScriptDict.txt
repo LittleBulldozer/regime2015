@@ -5,7 +5,7 @@ class ConditionScriptDict
 {
     #Fields#
 
-    public static bool TestCondition(int id)
+    public static bool TestCondition(int id, int nrTurn)
     {
         MemoryData memoryData = TheWorld.memory.data;
 

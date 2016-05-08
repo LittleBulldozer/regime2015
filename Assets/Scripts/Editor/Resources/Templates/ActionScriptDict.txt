@@ -4,7 +4,7 @@ class ActionScriptDict
 {
     #Fields#
 
-    public static void RunAction(int id)
+    public static void RunAction(int id, int nrTurn)
     {
         MemoryData memoryData = TheWorld.memory.data;
 

@@ -174,6 +174,7 @@ public class TriggerEditor : Editor
 
 			if (element.objectReferenceValue != null)
 			{
+                DestroyImmediate(element.objectReferenceValue, true);
 				prop.DeleteArrayElementAtIndex(list.index);
 			}
 

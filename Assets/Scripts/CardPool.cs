@@ -46,11 +46,11 @@ public class CardPool : MonoBehaviour
             }
         }
 
-        public void RunAction()
+        public void RunAction(int nrTurn)
         {
             foreach (var action in desc.actions)
             {
-                action.RunAction();
+                action.RunAction(nrTurn);
             }
         }
 

@@ -32,7 +32,7 @@ public class ScriptConditionDictPostProcessor : AssetPostprocessor
 				var str = "";
 				foreach (var scriptAction in dict.items)
 				{
-					str += string.Format("static bool S_{0}(MemoryData memory)\n", scriptAction.id);
+					str += string.Format("static bool S_{0}(int turn, MemoryData memory)\n", scriptAction.id);
 					str += "{\n";
 					var splited = scriptAction.script.Split('\n');
 					str += string.Join("\n", splited, 0, splited.Length - 1);
@@ -46,7 +46,7 @@ public class ScriptConditionDictPostProcessor : AssetPostprocessor
 				foreach (var scriptAction in dict.items)
 				{
 					str += string.Format("case {0}:\n", scriptAction.id);
-					str += string.Format("return S_{0}(memoryData);\n", scriptAction.id);
+					str += string.Format("return S_{0}(nrTurn, memoryData);\n", scriptAction.id);
 				}
 				return str;
 			}));

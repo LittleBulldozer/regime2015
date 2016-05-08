@@ -3,5 +3,5 @@ using System.Collections;
 
 public abstract class Action : ScriptableObject
 {
-	public abstract void RunAction();
+	public abstract void RunAction(int nrTurn);
 }

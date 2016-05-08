@@ -7,10 +7,9 @@ public class ScriptCondition : Condition, IUniqueID
 
 	public string script = "true";
 
-	public override bool IsSatisfied ()
+	public override bool IsSatisfied (int nrTurn)
 	{
-//		return 
-		return false;
+        return ConditionScriptDict.TestCondition(id, nrTurn);
 	}
 
 	public int GetID()

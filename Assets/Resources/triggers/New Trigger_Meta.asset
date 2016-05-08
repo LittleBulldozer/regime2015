@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: New Trigger_Meta
   m_EditorClassIdentifier: 
   id: 0
-  script: 
---- !u!114 &11418010
+  script: Random.Range(0, 100) >= 50
+--- !u!114 &11481124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -21,8 +21,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 206bed3125c034d0ba9e131bb2f0aacd, type: 3}
-  m_Name: ScriptCondition
+  m_Script: {fileID: 11500000, guid: 0679e8e2eef9442a09aa05b9a5373d4d, type: 3}
+  m_Name: LogAction
   m_EditorClassIdentifier: 
-  id: 1
-  script: 
+  memoText: gogo

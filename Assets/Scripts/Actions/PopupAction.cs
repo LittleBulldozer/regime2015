@@ -9,7 +9,7 @@ public class PopupAction : Action
 	public Sprite image;
 	public string description;
 
-	public override void RunAction ()
+	public override void RunAction (int nrTurn)
 	{
         var newView = Instantiate(popupView);
         newView.Set(title, image, description);
