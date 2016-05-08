@@ -10,6 +10,11 @@ memory.Fear > 30 && memory.Phase_0 == true
 
 스크립트 조건 예시 3)
 
+turn >= 3
+
+
+스크립트 조건 예시 4)
+
 int A = memory.Approval - memory.Fear;
 10 < A && Random.Range(0, 100) >= 50
 
