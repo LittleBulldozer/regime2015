@@ -32,7 +32,7 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 				var str = "";
 				foreach (var scriptAction in dict.items)
 				{
-					str += string.Format("static void S_{0}(int turn, MemoryData memory, CardPool cardPool)\n", scriptAction.id);
+					str += string.Format("static void S_{0}(int turn, MemoryData memory, CardPool cardPool, GameFlow gameFlow)\n", scriptAction.id);
 					str += "{\n";
 					str += scriptAction.script + ";";
 					str += "}\n";
@@ -44,7 +44,7 @@ public class ScriptActionDictPostProcessor : AssetPostprocessor
 				foreach (var scriptAction in dict.items)
 				{
 					str += string.Format("case {0}:\n", scriptAction.id);
-					str += string.Format("S_{0}(nrTurn, memoryData, cardPool);\n", scriptAction.id);
+					str += string.Format("S_{0}(nrTurn, memoryData, cardPool, gameFlow);\n", scriptAction.id);
 					str += "break;\n";
 				}
 				return str;

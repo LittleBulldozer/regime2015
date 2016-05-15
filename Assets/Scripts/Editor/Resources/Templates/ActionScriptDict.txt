@@ -8,6 +8,7 @@ class ActionScriptDict
     {
         MemoryData memoryData = TheWorld.memory.data;
 		CardPool cardPool = TheWorld.cardPool;
+		GameFlow gameFlow = TheWorld.gameFlow;
 
         switch (id)
         {
