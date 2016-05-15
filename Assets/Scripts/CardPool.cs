@@ -107,6 +107,7 @@ public class CardPool : MonoBehaviour
                 throw new System.Exception("Logical Exception!");
             }
             ret[i] = theOne;
+            pool.Remove(theOne);
         }
 
         return ret;
