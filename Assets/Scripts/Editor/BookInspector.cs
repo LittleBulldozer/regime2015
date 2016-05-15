@@ -2,12 +2,13 @@
 using System.Collections;
 using UnityEditor;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(Book), true)]
+//[CanEditMultipleObjects]
+//[CustomEditor(typeof(Book), true)]
 public class BookInspector : Editor
 {
     public override void OnInspectorGUI()
     {
+        /*
         Book book = target as Book;
 
         if (GUILayout.Button("Save"))
@@ -53,7 +54,7 @@ public class BookInspector : Editor
                 book.currentPageIndex = editorPageIndex;
                 EditorUtility.SetDirty(target);
             }
-        }
+        }*/
 
         DrawDefaultInspector();
     }

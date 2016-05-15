@@ -33,20 +33,21 @@ public class Flippable : MonoBehaviour, IDragHandler
         UpdateGeometry();
     }
 
-    Vector2 AssureInsideCircle(Vector2 Origin, float distSquare, Vector2 samplePos)
+    Vector3 AssureInsideCircle(Vector2 Origin, float distSquare, Vector2 samplePos)
     {
         var deltaPos = samplePos - Origin;
         if (deltaPos.sqrMagnitude > distSquare)
         {
             var angle = Mathf.Atan2(deltaPos.y, deltaPos.x);
             var dist = Mathf.Sqrt(distSquare);
-            return new Vector2(
+            return new Vector3(
                 Origin.x + Mathf.Cos(angle) * dist,
-                Origin.y + Mathf.Sin(angle) * dist);
+                Origin.y + Mathf.Sin(angle) * dist
+                , 0);
         }
         else
         {
-            return samplePos;
+            return new Vector3(samplePos.x, samplePos.y, 0);
         }
     }
 

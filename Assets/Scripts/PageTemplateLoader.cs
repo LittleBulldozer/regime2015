@@ -12,12 +12,12 @@ public class PageTemplateLoader : MonoBehaviour
     {
         var book = GetComponent<Book>();
         // clear
-        book.MoveShownContents(book.hiddenContents);
+//        book.MoveShownContents(book.hiddenContents);
 
         // load
         foreach (var obj in objs)
         {
-            obj.transform.SetParent(book.shownContents, false);
+            obj.transform.SetParent(book.frontSpace, false);
         }
     }
 }

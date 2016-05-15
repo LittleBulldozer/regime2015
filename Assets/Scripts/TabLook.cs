@@ -30,7 +30,7 @@ public class TabLook : MonoBehaviour
 
             if (inverse)
             {
-                RT.SetParent(theBook.shownContents, false);
+                RT.SetParent(theBook.frontSpace, false);
             }
             else
             {
@@ -50,7 +50,7 @@ public class TabLook : MonoBehaviour
         if (targetPageIndex == theBook.currentPageIndex)
         {
             var originalPos = RT.anchoredPosition;
-            transform.SetParent(theBook.shownContents, false);
+            transform.SetParent(theBook.frontSpace, false);
             StartCoroutine(KeepPos(originalPos));
         }
         else

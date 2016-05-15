@@ -23,6 +23,8 @@ public class TheWorld : MonoBehaviour
 
     public static TriggerMgr triggerMgr;
 
+    public static LogCenter logCenter;
+
     public CardCanvas _cardCanvas;
 
     public Canvas _eventCanvas;
