@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameFlow : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class GameFlow : MonoBehaviour
     public void NotifyCardSelected()
     {
         cardSelected = TheWorld.cardCanvas.selectedCard;
+    }
+
+    public void BackToTitle()
+    {
+        SceneManager.LoadSceneAsync("title");
     }
 
     CardPool.CardContext cardSelected = null;
