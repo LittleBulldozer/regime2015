@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
-using UniLinq;
-
+using System.Linq;
 
 public class CardPool : MonoBehaviour
 {
@@ -11,8 +9,8 @@ public class CardPool : MonoBehaviour
 		public CardContext(CardDesc desc)
 		{
 			this.desc = desc;
-			priority = desc.defaultPriority;
-		}
+            ResetPriority();
+        }
 
 		public float defaultPriority
 		{
@@ -27,6 +25,14 @@ public class CardPool : MonoBehaviour
             get
             {
                 return desc.title;
+            }
+        }
+
+        public string nickname
+        {
+            get
+            {
+                return desc.nickname;
             }
         }
 
@@ -54,10 +60,27 @@ public class CardPool : MonoBehaviour
             }
         }
 
-        public float priority;
+        public float priority
+        {
+            get
+            {
+                return _priority;
+            }
+
+            set
+            {
+                _priority = value;
+            }
+        }
+
+        public void ResetPriority()
+        {
+            _priority = desc.defaultPriority;
+        }
 
 		CardDesc desc;
-	}
+        float _priority;
+    }
 
 	public class CardPoolScriptController
 	{
@@ -109,6 +132,7 @@ public class CardPool : MonoBehaviour
                 throw new System.Exception("Logical Exception!");
             }
             ret[i] = theOne;
+            pool.Remove(theOne);
         }
 
         return ret;
@@ -118,6 +142,11 @@ public class CardPool : MonoBehaviour
 	{
 		return new CardPoolScriptController(this);
 	}
+
+    public CardContext GetCard(string nickname)
+    {
+        return cardContexts.Find(x => x.nickname == nickname);
+    }
 
 	List<CardContext> cardContexts = new List<CardContext>();
 }

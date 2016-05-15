@@ -29,3 +29,6 @@ memory.Fear += 30
 
 memory.Fear += 30;
 memory.Fund -= 500;
+game.Over(); // 아직 지원안됨.
+cardPool.GetCard("Basic_000").priority = 5;
+cardPool.GetCard("Basic_000").ResetPriority();
