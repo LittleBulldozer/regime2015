@@ -10,7 +10,7 @@ return Random.Range(0, 100) >= 50;}
 static bool S_1(int turn, MemoryData memory)
 {
 
-return ;}
+return true;;}
 static bool S_2(int turn, MemoryData memory)
 {
 

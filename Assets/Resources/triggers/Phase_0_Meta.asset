@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Phase_0_Meta
   m_EditorClassIdentifier: 
   id: 1
-  script: 
+  script: true;
 --- !u!114 &11481928
 MonoBehaviour:
   m_ObjectHideFlags: 0
