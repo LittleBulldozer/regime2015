@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206bed3125c034d0ba9e131bb2f0aacd, type: 3}
+  m_Name: Phase_Init_Meta
+  m_EditorClassIdentifier: 
+  id: 1
+  script: memory.Phase_0
+--- !u!114 &11481928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062032816efce46479c33f887b0c26b1, type: 3}
+  m_Name: ScriptAction
+  m_EditorClassIdentifier: 
+  id: 1
+  script: 'Basic_000.priority = 10;
+
+    Basic_001.priority = 10;
+
+    Basic_002.priority = 10;'

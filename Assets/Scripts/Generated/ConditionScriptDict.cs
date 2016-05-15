@@ -7,6 +7,10 @@ class ConditionScriptDict
 {
 
 return Random.Range(0, 100) >= 50;}
+static bool S_1(int turn, MemoryData memory)
+{
+
+return memory.Phase_0;}
 
 
     public static bool TestCondition(int id, int nrTurn)
@@ -17,6 +21,8 @@ return Random.Range(0, 100) >= 50;}
         {
             case 0:
 return S_0(nrTurn, memoryData);
+case 1:
+return S_1(nrTurn, memoryData);
 
 
             default:

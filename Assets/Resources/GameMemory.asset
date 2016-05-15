@@ -15,7 +15,7 @@ MonoBehaviour:
   - name: Approval
     dataType: 0
     customDataType: 
-    initialValue: 50
+    initialValue: 80
   - name: Fear
     dataType: 0
     customDataType: 
@@ -23,7 +23,7 @@ MonoBehaviour:
   - name: Fund
     dataType: 0
     customDataType: 
-    initialValue: 1000
+    initialValue: 10
   - name: AME_Reputation
     dataType: 0
     customDataType: 
