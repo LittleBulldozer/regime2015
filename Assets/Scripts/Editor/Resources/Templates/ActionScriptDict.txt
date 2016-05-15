@@ -7,6 +7,7 @@ class ActionScriptDict
     public static void RunAction(int id, int nrTurn)
     {
         MemoryData memoryData = TheWorld.memory.data;
+		CardPool cardPool = TheWorld.cardPool;
 
         switch (id)
         {
