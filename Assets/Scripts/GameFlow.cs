@@ -23,13 +23,13 @@ public class GameFlow : MonoBehaviour
     }
 
     CardPool.CardContext cardSelected = null;
-    RectTransform turnAlertPrefab;
+    UITurnAlert turnAlertPrefab;
     int _nrTurn = 1;
 
     void Awake()
     {
         TheWorld.gameFlow = this;
-        turnAlertPrefab = Resources.Load<RectTransform>("prefabs/TurnAlert");
+        turnAlertPrefab = Resources.Load<UITurnAlert>("prefabs/TurnAlert");
     }
 
     void Start ()
@@ -44,7 +44,10 @@ public class GameFlow : MonoBehaviour
             Debug.Log("Beginning of the turn " + _nrTurn + ".");
 
             var turnAlert = Instantiate(turnAlertPrefab);
-            turnAlert.SetParent(TheWorld.eventCanvas.transform, false);
+            turnAlert.transform.SetParent(TheWorld.eventCanvas.transform, false);
+            var nowdate = TheWorld.timer.dateTime.Value;
+            turnAlert.SetString(nowdate.Year, nowdate.Month, nowdate.Day
+                , _nrTurn);
 
             TheWorld.triggerMgr.RunAllTriggers(_nrTurn);
 

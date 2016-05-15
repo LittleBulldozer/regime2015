@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11469822}
   - 95: {fileID: 9537104}
   - 114: {fileID: 11431046}
+  - 114: {fileID: 11439308}
   m_Layer: 5
   m_Name: TurnAlert
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2\uBC88\uC9F8 \uCC28\uB840"
+  m_Text: "{0}\uBC88\uC9F8 \uCC28\uB840"
 --- !u!114 &11430034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,7 +136,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2016\uB144 3\uC6D4 12\uC77C"
+  m_Text: "{0}\uB144 {1}\uC6D4 {2}\uC77C"
 --- !u!114 &11431046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +148,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0320e988862f414b8aaf636d4e279b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11439308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090c65494b11e25418525b7aac03e1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dateTxt: {fileID: 11430034}
+  turnTxt: {fileID: 11417506}
 --- !u!114 &11469822
 MonoBehaviour:
   m_ObjectHideFlags: 1
