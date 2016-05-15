@@ -29,3 +29,4 @@ memory.Fear += 30
 
 memory.Fear += 30;
 memory.Fund -= 500;
+game.Over();
