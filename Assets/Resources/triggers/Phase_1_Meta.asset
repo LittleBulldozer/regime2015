@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 206bed3125c034d0ba9e131bb2f0aacd, type: 3}
-  m_Name: Phase_Init_Meta
+  m_Name: Phase_1_Meta
   m_EditorClassIdentifier: 
-  id: 1
-  script: memory.Phase_0
---- !u!114 &11481928
+  id: 2
+  script: memory.Fund>10;
+--- !u!114 &11464730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -24,9 +24,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062032816efce46479c33f887b0c26b1, type: 3}
   m_Name: ScriptAction
   m_EditorClassIdentifier: 
-  id: 1
-  script: 'Basic_000.priority = 10;
+  id: 12
+  script: 'cardPool.GetCard("Adv_000").priority = 30;
 
-    Basic_001.priority = 10;
+    cardPool.GetCard("Adv_001").priority = 30;
 
-    Basic_002.priority = 10;'
+    cardPool.GetCard("Adv_002").priority = 30;
+
+    cardPool.GetCard("Adv_003").priority = 30;'

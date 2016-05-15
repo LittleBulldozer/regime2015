@@ -26,7 +26,7 @@ MonoBehaviour:
   popupView: {fileID: 11407914, guid: 15ba1e283f9296d419c9537e950595a1, type: 2}
   title: "\uC778\uD130\uB137 \uB313\uAE00 \uC870\uC791\uD568"
   image: {fileID: 21300000, guid: 72f53f400def5cd45aabe81dc727d05a, type: 3}
-  description: "\u314E\u314E"
+  description: 
 --- !u!114 &11459602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,4 +39,4 @@ MonoBehaviour:
   m_Name: ScriptAction
   m_EditorClassIdentifier: 
   id: 0
-  script: memory.Fear += 5;
+  script: memory.Approval += 5;

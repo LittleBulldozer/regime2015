@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aa80e0d34dcb4796974d4c8715c7d2a, type: 3}
-  m_Name: Phase_Init
+  m_Name: Phase_1
   m_EditorClassIdentifier: 
   conditions:
-  - {fileID: 11400000, guid: 92c5fe06f2fa95c44b8371bb423da6ea, type: 2}
+  - {fileID: 11400000, guid: 0afd98aec34cf4b4db12c18585c1b654, type: 2}
   actions:
-  - {fileID: 11481928, guid: 92c5fe06f2fa95c44b8371bb423da6ea, type: 2}
+  - {fileID: 11464730, guid: 0afd98aec34cf4b4db12c18585c1b654, type: 2}

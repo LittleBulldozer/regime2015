@@ -17,4 +17,5 @@ MonoBehaviour:
     \uB3C4\uCCAD\uC744 \uC2E4\uC2DC\uD55C\uB2E4. Fear+5"
   image: {fileID: 21300000, guid: 5f1ffd5cff9223b41aaa62490eca2da1, type: 3}
   defaultPriority: 1
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: ee86a67242664d649ab9ea5ae3a6af84, type: 2}

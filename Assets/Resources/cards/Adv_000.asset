@@ -17,6 +17,7 @@ MonoBehaviour:
     \uBAA8\uB4E0 \uAC83\uC744 \uAC10\uC2DC\uD55C\uB2E4. \uC228\uC744 \uACF3\uC740
     \uC5C6\uB2E4. Fear+20"
   image: {fileID: 21300000, guid: 15547150c4db20f4c9fe3378cf020bbf, type: 3}
-  defaultPriority: 1
+  defaultPriority: 0
   actions:
   - {fileID: 11400000, guid: 82ffef32f1e9ee54cb23ae5198143789, type: 2}
+  - {fileID: 11451160, guid: 82ffef32f1e9ee54cb23ae5198143789, type: 2}

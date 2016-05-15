@@ -16,5 +16,6 @@ MonoBehaviour:
   description: "\uC774 \uC138\uC0C1\uC5D0 \uC2E0\uC740 \uC624\uC9C1 \uD558\uB098\uB2E4.
     Approval + 10"
   image: {fileID: 21300000, guid: 954972a6cf22dfa448897a5cc84b3de9, type: 3}
-  defaultPriority: 1
-  actions: []
+  defaultPriority: 0
+  actions:
+  - {fileID: 11400000, guid: f37bdc20de337314d9bbf3a6e51e5fe0, type: 2}

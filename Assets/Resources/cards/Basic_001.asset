@@ -19,3 +19,4 @@ MonoBehaviour:
   defaultPriority: 1
   actions:
   - {fileID: 11400000, guid: ce1a8893574be364989210cc1cc6dbad, type: 2}
+  - {fileID: 11487678, guid: ce1a8893574be364989210cc1cc6dbad, type: 2}

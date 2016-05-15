@@ -32,15 +32,11 @@ MonoBehaviour:
     dataType: 0
     customDataType: 
     initialValue: 50
-  - name: Phase_0
-    dataType: 3
+  - name: Riot_Level
+    dataType: 0
     customDataType: 
-    initialValue: true
-  - name: Phase_1
-    dataType: 3
+    initialValue: 0
+  - name: Phase
+    dataType: 0
     customDataType: 
-    initialValue: false
-  - name: Phase_2
-    dataType: 3
-    customDataType: 
-    initialValue: false
+    initialValue: 0

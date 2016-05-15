@@ -16,10 +16,8 @@ public int AME_Reputation = 50;
 [SerializeField]
 public int SOV_Reputation = 50;
 [SerializeField]
-public bool Phase_0 = true;
+public int Riot_Level = 0;
 [SerializeField]
-public bool Phase_1 = false;
-[SerializeField]
-public bool Phase_2 = false;
+public int Phase = 0;
 
 }
