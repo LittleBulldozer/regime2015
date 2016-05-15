@@ -23,6 +23,7 @@ public class ScriptActionEditor : Editor
         {
             AssetDatabase.SaveAssets();
             AssetDatabase.ImportAsset(ScriptActionDict.singletonPath);
+            AssetDatabase.Refresh();
         }
     }
 

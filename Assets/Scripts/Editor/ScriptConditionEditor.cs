@@ -23,6 +23,7 @@ public class ScriptConditionEditor : Editor
         {
             AssetDatabase.SaveAssets();
             AssetDatabase.ImportAsset(ScriptConditionDict.singletonPath);
+            AssetDatabase.Refresh();
         }
     }
 
