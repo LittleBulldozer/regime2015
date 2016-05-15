@@ -6,6 +6,8 @@ public class CardPool : MonoBehaviour
 {
 	public class CardContext
 	{
+        public const float MAGIC_NUMBER = 100f;
+
 		public CardContext(CardDesc desc)
 		{
 			this.desc = desc;
@@ -112,6 +114,26 @@ public class CardPool : MonoBehaviour
         }
     }
 
+    CardContext PopOne(List<CardContext> pool, float lowerLimit)
+    {
+        var filteredPool = pool.Where(x => x.priority >= lowerLimit);
+        float total_weight = filteredPool.Sum(x => x.priority >= lowerLimit
+            ? x.priority
+            : 0);
+        float random_value = Random.Range(0, total_weight);
+        float probe = 0;
+        var theOne = filteredPool.FirstOrDefault(x => {
+            probe += x.priority;
+            return probe > random_value;
+        });
+        if (theOne != null)
+        {
+            pool.Remove(theOne);
+        }
+
+        return theOne;
+    }
+
     public CardContext [] DrawCards(int n)
     {
         var ret = new CardContext[n];
@@ -120,19 +142,19 @@ public class CardPool : MonoBehaviour
 
         for (int i = 0; i < n; i++)
         {
-            float total_weight = pool.Sum(x => x.priority);
-            float random_value = Random.Range(0, total_weight);
-            float probe = 0;
-            var theOne = pool.Find(x => {
-                probe += x.priority;
-                return probe > random_value;
-            });
+            var privilegedOne = PopOne(pool, CardContext.MAGIC_NUMBER);
+            if (privilegedOne != null)
+            {
+                ret[i] = privilegedOne;
+                continue;
+            }
+
+            var theOne = PopOne(pool, 0);
             if (theOne == null)
             {
                 throw new System.Exception("Logical Exception!");
             }
             ret[i] = theOne;
-            pool.Remove(theOne);
         }
 
         return ret;
