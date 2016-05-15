@@ -102,7 +102,11 @@ public class NoteUI : MonoBehaviour
     {
         var anim = C.GetComponent<Animator>();
 
-        flippable.GetComponent<RawImage>().enabled = false;
+        // 이걸 내가 왜 했지?
+        // 애니 초반에 얘가 좀 '튀어서' 그런듯... 뭔가 문제가 있는데
+        // 아마 애들 transform이 dirty한 상태여서 그런듯 하다.
+        flippable.myRawImg.enabled = false;
+        flippable.myShadowImg.enabled = false;
 
         // 이렇게 안하면 같은 animation플레이 할 때 play 안되는 버그 발생...
         yield return null;
@@ -128,9 +132,11 @@ public class NoteUI : MonoBehaviour
             }
             backPageShadow.color = (1 - t) * shadowColor + t * new Color(1,1,1,0);
 
-            if (activeCount++ > 3)
+            if (activeCount >= 0 && activeCount++ > 3)
             {
-                flippable.GetComponent<RawImage>().enabled = true;
+                flippable.myRawImg.enabled = true;
+                flippable.myShadowImg.enabled = true;
+                activeCount = -1;
             }
 
             yield return null;

@@ -1,7 +1,7 @@
 ﻿// Based on http://rbarraza.com/html5-canvas-pageflip/
 
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
@@ -16,6 +16,9 @@ public class Flippable : MonoBehaviour, IDragHandler
     public RectTransform SB;
     public RectTransform ST;
     public RectTransform EB;
+
+    public RawImage myRawImg;
+    public RawImage myShadowImg;
 
     public void OnDrag(PointerEventData e)
     {
