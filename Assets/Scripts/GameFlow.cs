@@ -67,6 +67,8 @@ public class GameFlow : MonoBehaviour
             }
 
             _nrTurn++;
+
+            TheWorld.cardCanvas.gameObject.SetActive(true);
         }
     }
 }
