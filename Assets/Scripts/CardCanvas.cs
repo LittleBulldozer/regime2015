@@ -11,27 +11,27 @@ public class CardCanvas : MonoBehaviour
 
     public CardPool.CardContext [] contexts;
 
-    public CardPool.CardContext selectedCard
+    public CardView selectedCard
     {
         get {
             if (IsSelected(cardLT))
             {
-                return cardLT.cx;
+                return cardLT;
             }
 
             if (IsSelected(cardRT))
             {
-                return cardRT.cx;
+                return cardRT;
             }
 
             if (IsSelected(cardLB))
             {
-                return cardLB.cx;
+                return cardLB;
             }
 
             if (IsSelected(cardRB))
             {
-                return cardRB.cx;
+                return cardRB;
             }
 
             return null;

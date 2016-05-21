@@ -14,7 +14,7 @@ public class GameFlow : MonoBehaviour
 
     public void NotifyCardSelected()
     {
-        cardSelected = TheWorld.cardCanvas.selectedCard;
+        StartCoroutine(BeginCardSelectedProc());
     }
 
     public void BackToTitle()
@@ -76,5 +76,15 @@ public class GameFlow : MonoBehaviour
 
             _nrTurn++;
         }
+    }
+
+
+    IEnumerator BeginCardSelectedProc()
+    {
+        var selectedOne = TheWorld.cardCanvas.selectedCard;
+        selectedOne.transform.SetSiblingIndex(selectedOne.transform.parent.childCount);
+        yield return selectedOne.GoAway();
+        TheWorld.cardCanvas.gameObject.SetActive(false);
+        cardSelected = selectedOne.cx;
     }
 }
