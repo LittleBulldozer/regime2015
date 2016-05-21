@@ -7,6 +7,7 @@ public class CardCanvas : MonoBehaviour
     public CardView cardRT;
     public CardView cardLB;
     public CardView cardRB;
+    public CardCanvasScaleGroup scaleGroup;
 
     public CardPool.CardContext [] contexts;
 

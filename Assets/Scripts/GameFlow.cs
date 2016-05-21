@@ -54,6 +54,14 @@ public class GameFlow : MonoBehaviour
             var contexts = TheWorld.cardPool.DrawCards(4);
             TheWorld.cardCanvas.ApplyView(contexts);
 
+            if (_nrTurn > 1)
+            {
+                yield return new WaitForSeconds(1f);
+
+                TheWorld.cardCanvas.gameObject.SetActive(true);
+                TheWorld.cardCanvas.scaleGroup.ShowWithDelap();
+            }
+
             while (true)
             {
                 if (cardSelected != null)
@@ -67,8 +75,6 @@ public class GameFlow : MonoBehaviour
             }
 
             _nrTurn++;
-
-            TheWorld.cardCanvas.gameObject.SetActive(true);
         }
     }
 }
