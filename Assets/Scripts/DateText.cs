@@ -18,7 +18,7 @@ public class DateText : MonoBehaviour
 
     void DateTimeChanged(DateTime dateTime, DateTime prevDateTime)
     {
-        text.text = string.Format("{0}-{1}-{2}",
+        text.text = string.Format("{0}   {1}   {2}",
             dateTime.Year, dateTime.Month, dateTime.Day);
     }
 }

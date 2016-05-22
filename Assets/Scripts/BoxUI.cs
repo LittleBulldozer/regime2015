@@ -36,7 +36,7 @@ public class BoxUI : MonoBehaviour
             var fund = data.Fund;
             if (cachedFund != fund)
             {
-                fundTxt.text = string.Format("{0:n0} $", fund);
+                fundTxt.text = string.Format("{0:n0}", fund);
                 cachedFund = fund;
             }
 
