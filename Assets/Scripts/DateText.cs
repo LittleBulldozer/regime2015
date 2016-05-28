@@ -5,7 +5,15 @@ using UnityEngine.UI;
 
 public class DateText : MonoBehaviour
 {
+    public enum What
+    {
+        YEAR
+        , MONTH
+        , DAY
+    }
+
     public WorldTimer timer;
+    public What what;
 
     Text text;
 
@@ -18,7 +26,20 @@ public class DateText : MonoBehaviour
 
     void DateTimeChanged(DateTime dateTime, DateTime prevDateTime)
     {
-        text.text = string.Format("{0}   {1}   {2}",
-            dateTime.Year, dateTime.Month, dateTime.Day);
+        switch (what)
+        {
+            case What.YEAR:
+                text.text = string.Format("{0}", dateTime.Year);
+                break;
+
+            case What.MONTH:
+                text.text = string.Format("{00:0}", dateTime.Month);
+                break;
+
+            case What.DAY:
+                text.text = string.Format("{00:0}", dateTime.Day);
+                break;
+        }
+        
     }
 }
