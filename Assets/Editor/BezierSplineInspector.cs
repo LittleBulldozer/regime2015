@@ -55,14 +55,14 @@ public class BezierSplineInspector : Editor {
             spline.SetControlPointMode(selectedIndex, mode);
             EditorUtility.SetDirty(spline);
         }
-        Vector3 up = spline.GetUpPoint(selectedIndex);
+        float up = spline.GetUpAt(selectedIndex);
         EditorGUI.BeginChangeCheck();
-        up = EditorGUILayout.Vector3Field("Up", up);
+        up = EditorGUILayout.Slider("Up", up, -180f, 180f);
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(spline, "Set Up");
             EditorUtility.SetDirty(spline);
-            spline.SetUp(selectedIndex, Vector3.Normalize(up));
+            spline.SetUp(selectedIndex, up);
         }
     }
 

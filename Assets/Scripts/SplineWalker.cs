@@ -11,14 +11,12 @@ public class SplineWalker : MonoBehaviour {
 
     public SplineWalkerMode mode;
 
-    public void SetProgress(float prog)
+    [System.NonSerialized]
+    public bool simulateInEditMode = false;
+
+    public void SetProgress(float progress)
     {
-        Vector3 position = spline.GetPoint(prog);
-        transform.position = position;
-        if (lookForward)
-        {
-            transform.LookAt(position + spline.GetDirection(prog), spline.GetUp(prog));
-        }
+        this.progress = progress;
     }
 
     private float progress;
@@ -26,7 +24,7 @@ public class SplineWalker : MonoBehaviour {
 
     private void Update()
     {
-        if (Application.isPlaying == false)
+        if (Application.isPlaying == false && simulateInEditMode == false)
         {
             return;
         }
@@ -55,6 +53,11 @@ public class SplineWalker : MonoBehaviour {
             }
         }
 
-        SetProgress(progress);
+        Vector3 position = spline.GetPoint(progress);
+        transform.position = position;
+        if (lookForward)
+        {
+            spline.LookForward(transform, progress);
+        }
     }
 }

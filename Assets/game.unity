@@ -116,6 +116,7 @@ Transform:
   - {fileID: 1659684058}
   - {fileID: 1255188512}
   - {fileID: 145411619}
+  - {fileID: 388105591}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!114 &89989141
@@ -637,8 +638,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 145411618}
-  m_LocalRotation: {x: 0.6117632, y: 0.6279424, z: 0.3442867, w: 0.33600724}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalRotation: {x: -0.12782663, y: 0.6666031, z: -0.15754896, w: 0.7172719}
+  m_LocalPosition: {x: 2.2112122, y: -0.13995361, z: -0.48277298}
   m_LocalScale: {x: 0.08000004, y: 1, z: 0.1190001}
   m_Children: []
   m_Father: {fileID: 1678755}
@@ -699,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spline: {fileID: 0}
+  spline: {fileID: 388105592}
   duration: 1
   lookForward: 1
   mode: 1
@@ -1757,6 +1758,57 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 373155844}
+--- !u!1 &388105590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 388105591}
+  - 114: {fileID: 388105592}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388105591
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388105590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1678755}
+  m_RootOrder: 6
+--- !u!114 &388105592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388105590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b154883273c2845f39445c8015d81639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {x: 1, y: 0, z: 0}
+  - {x: 2.0190125, y: -0.23086548, z: -1.0375532}
+  - {x: 3, y: -0.11401367, z: -0.09881735}
+  - {x: 4, y: -0.11401367, z: -0.09881735}
+  ups:
+  - 28
+  - -59
+  - 0
+  - 51
+  modes: 0000000000000000
+  loop: 0
 --- !u!1 &411046479
 GameObject:
   m_ObjectHideFlags: 0

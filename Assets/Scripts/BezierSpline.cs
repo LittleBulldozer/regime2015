@@ -7,7 +7,7 @@ public class BezierSpline : MonoBehaviour {
 	private Vector3[] points;
 
     [SerializeField]
-    private Vector3[] ups;
+    private float[] ups;
 
     [SerializeField]
 	private BezierControlPointMode[] modes;
@@ -38,7 +38,7 @@ public class BezierSpline : MonoBehaviour {
 		return points[index];
 	}
 
-    public Vector3 GetUpPoint(int index)
+    public float GetUpAt(int index)
     {
         return ups[index];
     }
@@ -75,7 +75,7 @@ public class BezierSpline : MonoBehaviour {
 		EnforceMode(index);
 	}
 
-    public void SetUp(int index, Vector3 up)
+    public void SetUp(int index, float up)
     {
         ups[index] = up;
     }
@@ -176,7 +176,16 @@ public class BezierSpline : MonoBehaviour {
 		return GetVelocity(t).normalized;
 	}
 
-    public Vector3 GetUp(float t)
+    public void LookForward(Transform T, float t)
+    {
+        var dir = GetDirection(t);
+        var N = dir.normalized;
+        var worldUpInN = Vector3.ProjectOnPlane(Vector3.up, N);
+        var rot = Quaternion.AngleAxis(GetUp(t), N);
+        T.LookAt(T.position + dir, rot * worldUpInN);
+    }
+
+    public float GetUp(float t)
     {
         int i = Mathf.FloorToInt(t * points.Length);
         if (i == points.Length) i--;
@@ -184,7 +193,6 @@ public class BezierSpline : MonoBehaviour {
         int j = i + 1;
         if (j >= points.Length) j--;
         var upj = ups[j];
-
         var tt = t * points.Length - (float)i;
         return up * (1 - tt) + upj * (tt);
     }
@@ -204,9 +212,9 @@ public class BezierSpline : MonoBehaviour {
 		EnforceMode(points.Length - 4);
 
         Array.Resize(ref ups, ups.Length + 3);
-        ups[ups.Length - 3] = Vector3.up;
-        ups[ups.Length - 2] = Vector3.up;
-        ups[ups.Length - 1] = Vector3.up;
+        ups[ups.Length - 3] = 0f;
+        ups[ups.Length - 2] = 0f;
+        ups[ups.Length - 1] = 0f;
 
         if (loop) {
 			points[points.Length - 1] = points[0];
@@ -222,12 +230,7 @@ public class BezierSpline : MonoBehaviour {
 			new Vector3(3f, 0f, 0f),
 			new Vector3(4f, 0f, 0f)
 		};
-        ups = new Vector3[] {
-            Vector3.up
-            , Vector3.up
-            , Vector3.up
-            , Vector3.up
-        };
+        ups = new float[] { 0, 0, 0, 0 };
         modes = new BezierControlPointMode[] {
 			BezierControlPointMode.Free,
 			BezierControlPointMode.Free
