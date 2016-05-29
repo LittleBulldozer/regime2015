@@ -39,25 +39,34 @@ public class BezierSplineInspector : Editor {
 		}
 	}
 
-	private void DrawSelectedPointInspector() {
-		GUILayout.Label("Selected Point");
-		EditorGUI.BeginChangeCheck();
-		Vector3 point = EditorGUILayout.Vector3Field("Position", spline.GetControlPoint(selectedIndex));
-		if (EditorGUI.EndChangeCheck()) {
-			Undo.RecordObject(spline, "Move Point");
-			EditorUtility.SetDirty(spline);
-			spline.SetControlPoint(selectedIndex, point);
-		}
-		EditorGUI.BeginChangeCheck();
-		BezierControlPointMode mode = (BezierControlPointMode)EditorGUILayout.EnumPopup("Mode", spline.GetControlPointMode(selectedIndex));
-		if (EditorGUI.EndChangeCheck()) {
-			Undo.RecordObject(spline, "Change Point Mode");
-			spline.SetControlPointMode(selectedIndex, mode);
-			EditorUtility.SetDirty(spline);
-		}
-	}
+    private void DrawSelectedPointInspector() {
+        GUILayout.Label("Selected Point");
+        EditorGUI.BeginChangeCheck();
+        Vector3 point = EditorGUILayout.Vector3Field("Position", spline.GetControlPoint(selectedIndex));
+        if (EditorGUI.EndChangeCheck()) {
+            Undo.RecordObject(spline, "Move Point");
+            EditorUtility.SetDirty(spline);
+            spline.SetControlPoint(selectedIndex, point);
+        }
+        EditorGUI.BeginChangeCheck();
+        BezierControlPointMode mode = (BezierControlPointMode)EditorGUILayout.EnumPopup("Mode", spline.GetControlPointMode(selectedIndex));
+        if (EditorGUI.EndChangeCheck()) {
+            Undo.RecordObject(spline, "Change Point Mode");
+            spline.SetControlPointMode(selectedIndex, mode);
+            EditorUtility.SetDirty(spline);
+        }
+        Vector3 up = spline.GetUpPoint(selectedIndex);
+        EditorGUI.BeginChangeCheck();
+        up = EditorGUILayout.Vector3Field("Up", up);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(spline, "Set Up");
+            EditorUtility.SetDirty(spline);
+            spline.SetUp(selectedIndex, Vector3.Normalize(up));
+        }
+    }
 
-	private void OnSceneGUI () {
+    private void OnSceneGUI () {
 		spline = target as BezierSpline;
 		handleTransform = spline.transform;
 		handleRotation = Tools.pivotRotation == PivotRotation.Local ?

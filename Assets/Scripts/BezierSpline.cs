@@ -6,7 +6,10 @@ public class BezierSpline : MonoBehaviour {
 	[SerializeField]
 	private Vector3[] points;
 
-	[SerializeField]
+    [SerializeField]
+    private Vector3[] ups;
+
+    [SerializeField]
 	private BezierControlPointMode[] modes;
 
 	[SerializeField]
@@ -35,7 +38,12 @@ public class BezierSpline : MonoBehaviour {
 		return points[index];
 	}
 
-	public void SetControlPoint (int index, Vector3 point) {
+    public Vector3 GetUpPoint(int index)
+    {
+        return ups[index];
+    }
+
+    public void SetControlPoint (int index, Vector3 point) {
 		if (index % 3 == 0) {
 			Vector3 delta = point - points[index];
 			if (loop) {
@@ -66,6 +74,11 @@ public class BezierSpline : MonoBehaviour {
 		points[index] = point;
 		EnforceMode(index);
 	}
+
+    public void SetUp(int index, Vector3 up)
+    {
+        ups[index] = up;
+    }
 
 	public BezierControlPointMode GetControlPointMode (int index) {
 		return modes[(index + 1) / 3];
@@ -163,6 +176,19 @@ public class BezierSpline : MonoBehaviour {
 		return GetVelocity(t).normalized;
 	}
 
+    public Vector3 GetUp(float t)
+    {
+        int i = Mathf.FloorToInt(t * points.Length);
+        if (i == points.Length) i--;
+        var up = ups[i];
+        int j = i + 1;
+        if (j >= points.Length) j--;
+        var upj = ups[j];
+
+        var tt = t * points.Length - (float)i;
+        return up * (1 - tt) + upj * (tt);
+    }
+
 	public void AddCurve () {
 		Vector3 point = points[points.Length - 1];
 		Array.Resize(ref points, points.Length + 3);
@@ -177,7 +203,12 @@ public class BezierSpline : MonoBehaviour {
 		modes[modes.Length - 1] = modes[modes.Length - 2];
 		EnforceMode(points.Length - 4);
 
-		if (loop) {
+        Array.Resize(ref ups, ups.Length + 3);
+        ups[ups.Length - 3] = Vector3.up;
+        ups[ups.Length - 2] = Vector3.up;
+        ups[ups.Length - 1] = Vector3.up;
+
+        if (loop) {
 			points[points.Length - 1] = points[0];
 			modes[modes.Length - 1] = modes[0];
 			EnforceMode(0);
@@ -191,7 +222,13 @@ public class BezierSpline : MonoBehaviour {
 			new Vector3(3f, 0f, 0f),
 			new Vector3(4f, 0f, 0f)
 		};
-		modes = new BezierControlPointMode[] {
+        ups = new Vector3[] {
+            Vector3.up
+            , Vector3.up
+            , Vector3.up
+            , Vector3.up
+        };
+        modes = new BezierControlPointMode[] {
 			BezierControlPointMode.Free,
 			BezierControlPointMode.Free
 		};
