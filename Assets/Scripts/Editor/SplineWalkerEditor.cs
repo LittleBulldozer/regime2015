@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-[CustomEditor(typeof(SplineWalker))]
+//[CustomEditor(typeof(SplineWalker))]
 public class SplineWalkerEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -16,7 +16,7 @@ public class SplineWalkerEditor : Editor
             prog = EditorGUILayout.Slider(prog, 0f, 1f);
             if (EditorGUI.EndChangeCheck())
             {
-                walker.SetProgress(prog);
+//                walker.SetProgress(prog);
                 EditorUtility.SetDirty(walker);
             }
         }
