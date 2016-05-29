@@ -66,7 +66,7 @@ Shader "Unlit/Desk"
 			struct v2f
 			{
 				float4 pos							: SV_POSITION;
-				float4 screenPos					: TEXCOORD0;
+				float4 vertPos						: TEXCOORD0;
 				unityShadowCoord4 	_ShadowCoord	: TEXCOORD1;
 			};
 
@@ -75,7 +75,11 @@ Shader "Unlit/Desk"
 				v2f o;
 
 				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.screenPos = ComputeScreenPos(o.pos);
+
+				float4 clipSpace = o.pos;
+				clipSpace.xy /= clipSpace.w;
+				clipSpace.xy = 0.5 * (clipSpace.xy + 1.0);
+				o.vertPos = clipSpace;
 
 				TRANSFER_SHADOW(o);
 
@@ -95,7 +99,7 @@ Shader "Unlit/Desk"
 			{
 				half atten = SHADOW_ATTENUATION(i);
 
-				float4 pos = UNITY_PROJ_COORD(i.screenPos);
+				float2 pos = i.vertPos.xy;
 
 				half4 c;
 
@@ -104,12 +108,15 @@ Shader "Unlit/Desk"
 				//				float divTextureWidth = 1.0f / _TexWidth;
 				//float ratio = (textureWidth / (screenWidth * _ScreenWidthWeight));
 
-				float ratio = 1 / screenWidth;
+//				float ratio = 1 / screenWidth;
 
 				i.pos.y = screenHeight - i.pos.y;
 
-				float tx = ratio * i.pos.x;
-				float ty = ratio * i.pos.y;
+//				float tx = ratio * i.pos.x;
+//				float ty = ratio * i.pos.y;
+
+				float tx = pos.x;
+				float ty = screenHeight * _TexHeight * pos.y / _TexWidth / screenWidth;
 
 				if (tx < 0 || ty < 0 || tx >= 1 || ty >= 0.995f)
 				{
@@ -124,6 +131,11 @@ Shader "Unlit/Desk"
 				c = tex2D(_MainTex, float2(tx, ty));
 				if (atten < 1) {
 					c.rgb *= _ShadowColor.rgb;
+				}
+
+				if (pos.x < 0.3)
+				{
+//					c = half4(1, 0, 0, 1);
 				}
 
 				return c;
