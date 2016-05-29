@@ -123,9 +123,9 @@ Shader "Unlit/Desk"
 					discard;
 				}
 
-				ty = 1 - ty;
+//				ty = 1 - ty;
 				#if UNITY_UV_STARTS_AT_TOP
-				ty = 1 - ty;
+//				ty = 1 - ty;
 				#endif
 
 				c = tex2D(_MainTex, float2(tx, ty));
