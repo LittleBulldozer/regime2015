@@ -9,6 +9,7 @@ public class CardView : MonoBehaviour
     public Text title;
     public Image image;
     public Text description;
+    public Text fullDescription;
 
     public void SetCardContext(CardPool.CardContext cx)
     {
@@ -17,6 +18,7 @@ public class CardView : MonoBehaviour
         title.text = cx.title;
         image.sprite = cx.image;
         description.text = cx.description;
+        fullDescription.text = cx.fullDescription;
     }
 
     public IEnumerator GoAway()

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CardClick : MonoBehaviour
 {
     public Button selectButton;
+    public Toggle contentToggle;
 
     Animator anim;
     Toggle toggle;
@@ -24,19 +25,29 @@ public class CardClick : MonoBehaviour
         if (isOn)
         {
             anim.SetTrigger("GoCenter");
+            selectButton.gameObject.SetActive(true);
             selectButton.onClick.AddListener(OnSelected);
+            transform.SetSiblingIndex(transform.parent.childCount - 1);
+            contentToggle.gameObject.SetActive(true);
+            contentToggle.onValueChanged.AddListener(OnContentToggled);
         }
         else
         {
-            anim.SetTrigger("Back");
+            contentToggle.onValueChanged.RemoveListener(OnContentToggled);
+            contentToggle.gameObject.SetActive(false);
             selectButton.onClick.RemoveListener(OnSelected);
+            selectButton.gameObject.SetActive(false);
+            anim.SetTrigger("Back");
         }
-
-        transform.SetSiblingIndex(transform.parent.childCount - 1);
     }
 
     void OnSelected()
     {
         TheWorld.gameFlow.NotifyCardSelected();
+    }
+
+    void OnContentToggled(bool isOn)
+    {
+        anim.SetBool("ContentIsFront", !isOn);
     }
 }

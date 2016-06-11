@@ -54,6 +54,14 @@ public class CardPool : MonoBehaviour
             }
         }
 
+        public string fullDescription
+        {
+            get
+            {
+                return desc.fullDescription;
+            }
+        }
+
         public void RunAction(int nrTurn)
         {
             foreach (var action in desc.actions)

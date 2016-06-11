@@ -17,5 +17,6 @@ MonoBehaviour:
     \uBD88\uB9CC\uC744 \uC7A0\uC7AC\uC6B4\uB2E4. Approval + 20"
   image: {fileID: 21300000, guid: 792149018af77da4eaf93440c0fd293a, type: 3}
   defaultPriority: 0
+  fullDescription: d
   actions:
   - {fileID: 11400000, guid: 8d5786e9d65d76e45810d9ad8affb0a7, type: 2}
