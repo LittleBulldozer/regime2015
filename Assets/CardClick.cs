@@ -51,7 +51,7 @@ public class CardClick : MonoBehaviour
         var stateInfo = anim.GetCurrentAnimatorStateInfo(1);
         if (stateInfo.IsName("ContentFront") && isOn)
         {
-            if (stateInfo.normalizedTime < .7f)
+            if (stateInfo.normalizedTime < .5f)
             {
                 anim.Play("ContentBack", 1, 1f);
             }
@@ -64,7 +64,7 @@ public class CardClick : MonoBehaviour
 
         if (stateInfo.IsName("ContentBack") && !isOn)
         {
-            if (stateInfo.normalizedTime < .7f)
+            if (stateInfo.normalizedTime < .5f)
             {
                 anim.Play("ContentFront", 1, 1f);
             }
