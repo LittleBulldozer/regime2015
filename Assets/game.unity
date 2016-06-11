@@ -288,6 +288,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11439482, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
+      propertyPath: blackShadow
+      value: 
+      objectReference: {fileID: 572835056}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
   m_IsPrefabParent: 0
@@ -2619,6 +2623,10 @@ Prefab:
       propertyPath: selectButton
       value: 
       objectReference: {fileID: 1645150125}
+    - target: {fileID: 11439482, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
+      propertyPath: blackShadow
+      value: 
+      objectReference: {fileID: 572835056}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
   m_IsPrefabParent: 0
@@ -2854,6 +2862,7 @@ GameObject:
   - 222: {fileID: 572835054}
   - 114: {fileID: 572835053}
   - 114: {fileID: 572835055}
+  - 114: {fileID: 572835056}
   m_Layer: 5
   m_Name: BlackShadow
   m_TagString: Untagged
@@ -2955,6 +2964,18 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
+--- !u!114 &572835056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 572835051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b7b8744ae6af44ea30a6dd594fc844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockDie: 0
 --- !u!1 &578840134
 GameObject:
   m_ObjectHideFlags: 0
@@ -4526,6 +4547,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11439482, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
+      propertyPath: blackShadow
+      value: 
+      objectReference: {fileID: 572835056}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
   m_IsPrefabParent: 0
@@ -7628,6 +7653,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11439482, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
+      propertyPath: blackShadow
+      value: 
+      objectReference: {fileID: 572835056}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8031729f219034f4ba1f681780c2dcbc, type: 2}
   m_IsPrefabParent: 0
@@ -7782,6 +7811,58 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cfaa7f41d844fe469972a446b50c7db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1838325123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1838325124}
+  - 65: {fileID: 1838325125}
+  - 114: {fileID: 1838325126}
+  m_Layer: 0
+  m_Name: PaperButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1838325124
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838325123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0017, y: -0.0042, z: -0.144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1966247434}
+  m_RootOrder: 2
+--- !u!65 &1838325125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838325123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.07, z: 0.07}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1838325126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838325123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d317d57788d0024f95be22d66235e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1852072777
@@ -8183,6 +8264,7 @@ Transform:
   m_Children:
   - {fileID: 1247855630}
   - {fileID: 1022970594}
+  - {fileID: 1838325124}
   m_Father: {fileID: 1678755}
   m_RootOrder: 0
 --- !u!23 &1966247435

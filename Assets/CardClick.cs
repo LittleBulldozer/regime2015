@@ -8,6 +8,7 @@ public class CardClick : MonoBehaviour
 {
     public Button selectButton;
     public Toggle contentToggle;
+    public BlackShadow blackShadow;
 
     Animator anim;
     Toggle toggle;
@@ -30,6 +31,7 @@ public class CardClick : MonoBehaviour
             transform.SetSiblingIndex(transform.parent.childCount - 1);
             contentToggle.gameObject.SetActive(true);
             contentToggle.onValueChanged.AddListener(OnContentToggled);
+            blackShadow.blockDie = true;
         }
         else
         {
