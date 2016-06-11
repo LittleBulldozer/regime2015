@@ -17,12 +17,14 @@ public class CardAnimParam : MonoBehaviour
 
     void OnEnable()
     {
+#if UNITY_EDITOR
         if (Application.isPlaying == false)
         {
             originalPos = transform.localPosition;
             EditorUtility.SetDirty(this);
         }
         else
+#endif
         {
             transform.localPosition = originalPos;
         }
