@@ -13,10 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "\uB1CC\uBB3C \uC218\uC218"
   nickname: Basic_001
-  description: "\uAE30\uC5C5\uCCB4\uB85C\uBD80\uD130 \uBD88\uBC95 \uD6C4\uC6D0\uAE08\uC744
-    \uBC1B\uB294\uB2E4. \uC790\uAE08+500"
+  description: "\uC790\uAE08+500"
   image: {fileID: 21300000, guid: 997ae5a43d6de0d49961b3774456d5db, type: 3}
   defaultPriority: 1
+  fullDescription: "\uAE30\uC5C5\uCCB4\uB85C\uBD80\uD130 \uBD88\uBC95 \uD6C4\uC6D0\uAE08\uC744
+    \uBC1B\uB294\uB2E4. "
   actions:
   - {fileID: 11400000, guid: ce1a8893574be364989210cc1cc6dbad, type: 2}
   - {fileID: 11487678, guid: ce1a8893574be364989210cc1cc6dbad, type: 2}
