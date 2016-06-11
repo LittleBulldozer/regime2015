@@ -48,6 +48,33 @@ public class CardClick : MonoBehaviour
 
     void OnContentToggled(bool isOn)
     {
+        var stateInfo = anim.GetCurrentAnimatorStateInfo(1);
+        if (stateInfo.IsName("ContentFront") && isOn)
+        {
+            if (stateInfo.normalizedTime < .7f)
+            {
+                anim.Play("ContentBack", 1, 1f);
+            }
+            else if (stateInfo.normalizedTime < 1f)
+            {
+                anim.Play("ContentFront", 1, 1f);
+                return;
+            }
+        }
+
+        if (stateInfo.IsName("ContentBack") && !isOn)
+        {
+            if (stateInfo.normalizedTime < .7f)
+            {
+                anim.Play("ContentFront", 1, 1f);
+            }
+            else if (stateInfo.normalizedTime < 1f)
+            {
+                anim.Play("ContentBack", 1, 1f);
+                return;
+            }
+        }
+
         anim.SetBool("ContentIsFront", !isOn);
     }
 }
