@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "\uAD00\uC81C \uBBFC\uC911 \uC9D1\uD68C"
   nickname: Basic_003
-  description: "\uC815\uAD8C\uC5D0 \uCC2C\uC131\uD558\uB294 \uC2DC\uBBFC\uB4E4\uC744
-    \uBAA8\uC544 \uC9D1\uD68C\uB97C \uC5F0\uB2E4. Approval +5 Fear +5"
+  description: Approval +5 Fear +5
   image: {fileID: 21300000, guid: 8fd2adca89ee65646b312a4148b2d822, type: 3}
   defaultPriority: 1
+  fullDescription: "\uC815\uAD8C\uC5D0 \uCC2C\uC131\uD558\uB294 \uC2DC\uBBFC\uB4E4\uC744
+    \uBAA8\uC544 \uC9D1\uD68C\uB97C \uC5F0\uB2E4. "
   actions:
   - {fileID: 11400000, guid: 303ab64528fa4b045a9fff266ef8b88a, type: 2}

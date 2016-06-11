@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "\uC6B0\uBBFC\uD654 \uC815\uCC45"
   nickname: Adv_001
-  description: "\uB300\uC911\uB4E4\uC5D0\uAC8C \uAC12\uC2FC \uC624\uB77D\uC744 \uC81C\uACF5\uD558\uC5EC
-    \uBD88\uB9CC\uC744 \uC7A0\uC7AC\uC6B4\uB2E4. Approval + 20"
+  description: Approval + 20
   image: {fileID: 21300000, guid: 792149018af77da4eaf93440c0fd293a, type: 3}
   defaultPriority: 0
-  fullDescription: d
+  fullDescription: "\uB300\uC911\uB4E4\uC5D0\uAC8C \uAC12\uC2FC \uC624\uB77D\uC744
+    \uC81C\uACF5\uD558\uC5EC \uBD88\uB9CC\uC744 \uC7A0\uC7AC\uC6B4\uB2E4. "
   actions:
   - {fileID: 11400000, guid: 8d5786e9d65d76e45810d9ad8affb0a7, type: 2}
