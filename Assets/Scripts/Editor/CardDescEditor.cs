@@ -44,8 +44,11 @@ public class CardDescEditor : Editor
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("description"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("image"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultPriority"));
+        EditorGUILayout.LabelField("Full Description");
+        var fullDesc = serializedObject.FindProperty("fullDescription");
+        fullDesc.stringValue = EditorGUILayout.TextArea(fullDesc.stringValue);
 
-		actionList.DoLayoutList();
+        actionList.DoLayoutList();
 
 		if (selectedItem != null && selectedItem.objectReferenceValue != null)
 		{

@@ -8,6 +8,7 @@ public class CardDesc : ScriptableObject
 	public string description;
 	public Sprite image;
 	public float defaultPriority;
+    public string fullDescription;
 
 	public List<Action> actions = new List<Action>();
 }
