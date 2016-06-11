@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CardCanvas : MonoBehaviour
 {
@@ -57,7 +58,6 @@ public class CardCanvas : MonoBehaviour
 
     bool IsSelected(CardView view)
     {
-        return view.GetComponent<Selectable>()
-                .state == Selectable.State.Selected;
+        return view.GetComponent<Toggle>().isOn;
     }
 }
