@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class GameFlow : MonoBehaviour
 {
+    public float delay;
+
     public int nrTurn
     {
         get
@@ -54,13 +56,10 @@ public class GameFlow : MonoBehaviour
             var contexts = TheWorld.cardPool.DrawCards(4);
             TheWorld.cardCanvas.ApplyView(contexts);
 
-            if (_nrTurn > 1)
-            {
-                yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(delay);
 
-                TheWorld.cardCanvas.gameObject.SetActive(true);
-                TheWorld.cardCanvas.scaleGroup.ShowWithDelap();
-            }
+            TheWorld.cardCanvas.gameObject.SetActive(true);
+            TheWorld.cardCanvas.scaleGroup.ShowWithDelap();
 
             while (true)
             {
